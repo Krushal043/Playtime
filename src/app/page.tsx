@@ -4,27 +4,20 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { LAUNCH_PRODUCTS } from '@/data/products';
 import { Product, ProductPack, CategoryType } from '@/types';
 import { useCart } from '@/context/CartContext';
-import PromoBanner from '@/components/PromoBanner';
-import Navbar from '@/components/Navbar';
-import DualProductShowcase from '@/components/DualProductShowcase';
-import ProductCard from '@/components/ProductCard';
-import ProductQuickView from '@/components/ProductQuickView';
-import InfluencerVideoSection from '@/components/InfluencerVideoSection';
-import DuoBundleBanner from '@/components/DuoBundleBanner';
-import ClinicalStandardsBanner from '@/components/ClinicalStandardsBanner';
-import UnboxingExperienceSection from '@/components/UnboxingExperienceSection';
-import CustomerReviews from '@/components/CustomerReviews';
-import FAQSection from '@/components/FAQSection';
-import Footer from '@/components/Footer';
+import AeroNavbar from '@/components/AeroNavbar';
+import AeroHeroIsland from '@/components/AeroHeroIsland';
+import AeroSearchCategoryBar from '@/components/AeroSearchCategoryBar';
+import AeroBestsellersRow from '@/components/AeroBestsellersRow';
+import AeroBentoCategories from '@/components/AeroBentoCategories';
+import AeroTechnologyGrid from '@/components/AeroTechnologyGrid';
+import AeroTrustStrip from '@/components/AeroTrustStrip';
+import AeroFooter from '@/components/AeroFooter';
+import InfluencerVideoSection from '@/components/home/InfluencerVideoSection';
 import DiscreetBillingPreviewModal from '@/components/DiscreetBillingPreviewModal';
 import AgeVerificationModal from '@/components/AgeVerificationModal';
-import WhatsAppChatButton from '@/components/WhatsAppChatButton';
 import IntimacyQuizModal from '@/components/IntimacyQuizModal';
 import DoctorConsultationDrawer from '@/components/DoctorConsultationDrawer';
-import SpinAndWinModal from '@/components/SpinAndWinModal';
-import SpinTeaserBanner from '@/components/SpinTeaserBanner';
-import ModernLuxuryHero from '@/components/ModernLuxuryHero';
-import { Sparkles, Search, SlidersHorizontal, Package, Tag } from 'lucide-react';
+import ProductQuickView from '@/components/ProductQuickView';
 
 export default function Home() {
   const { addToCart, setIsCartOpen } = useCart();
@@ -57,32 +50,38 @@ export default function Home() {
 
   useEffect(() => {
     fetchLiveProducts();
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('search');
+      const cat = params.get('category');
+      if (q) setSearchQuery(q);
+      if (cat) setSelectedCategory(cat as CategoryType);
+      if (q || cat) {
+        setTimeout(() => {
+          const el = document.getElementById('flagship-section');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
   }, []);
 
   const handleAddToCart = (product: Product, pack: ProductPack, quantity = 1) => {
     addToCart(product, pack, quantity);
   };
 
-  const scrollToCatalog = () => {
-    const el = document.getElementById('catalog-section');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToFlagships = () => {
+  const scrollToBestsellers = () => {
     const el = document.getElementById('flagship-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Filtered products list
+  // Filtered products list based on search and category
   const filteredProducts = useMemo(() => {
     return products.filter((prod) => {
-      // Category filter
       const matchesCategory =
         selectedCategory === 'all' ||
         prod.category === selectedCategory ||
         (selectedCategory === 'bestsellers' && (prod.badge || prod.isFeatured));
 
-      // Search query filter
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !q ||
@@ -95,165 +94,70 @@ export default function Home() {
   }, [products, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen silver-lighting-bg flex flex-col selection:bg-emerald-600/20 selection:text-emerald-950">
+    <div className="min-h-screen silver-shade-bg flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
       
       {/* 18+ Discretion Gate */}
       <AgeVerificationModal />
 
-      {/* Top Promotional Announcement Bar */}
-      <PromoBanner />
-
-      {/* Main Brand Navbar */}
-      <Navbar
+      {/* Clean Colorful Header with Integrated Search */}
+      <AeroNavbar
         onOpenCart={() => setIsCartOpen(true)}
-        onOpenBillingModal={() => setIsBillingModalOpen(true)}
-        onOpenQuiz={() => setIsQuizOpen(true)}
         onOpenDoctor={() => setIsDoctorDrawerOpen(true)}
-        selectedCategory={selectedCategory}
-        onSelectCategory={(cat) => {
-          setSelectedCategory(cat);
-          scrollToCatalog();
-        }}
         searchQuery={searchQuery}
-        onSearchChange={(q) => {
-          setSearchQuery(q);
-          scrollToCatalog();
-        }}
+        onSearchChange={setSearchQuery}
       />
 
-      {/* Editorial Clean Luxury Hero Section */}
-      <ModernLuxuryHero
+      {/* SECTION 1: Grand Hero Island Container */}
+      <AeroHeroIsland
         flagship={products[0]}
-        onShopClick={scrollToCatalog}
+        onShopClick={scrollToBestsellers}
         onQuizClick={() => setIsQuizOpen(true)}
       />
 
-      {/* Sleek Clinical Credibility Strip */}
-      <ClinicalStandardsBanner onExploreClick={scrollToCatalog} />
+      {/* SECTION 2: Search Bar & Category Filter Pills */}
+      <AeroSearchCategoryBar
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+        onOpenDoctor={() => setIsDoctorDrawerOpen(true)}
+      />
 
-      {/* 2 Flagship Products Showcase */}
-      <DualProductShowcase
-        products={products}
+      {/* SECTION 3: Bestseller Formulations (Hit of Sales Row) */}
+      <AeroBestsellersRow
+        products={filteredProducts.length > 0 ? filteredProducts : products}
+        loading={loadingProducts}
         onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
         onQuickView={(prod) => setQuickViewProduct(prod)}
       />
 
-      {/* COMPLETE CATALOG SECTION (Dynamic MongoDB Products) */}
-      <section id="catalog-section" className="py-16 max-w-7xl mx-auto px-4 sm:px-6 w-full">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-pill text-[#0a193d] text-[11px] font-black uppercase tracking-wider mb-2.5 shadow-2xs">
-            <Package className="w-3.5 h-3.5 text-blue-900" />
-            <span>FULL BOTANICAL COLLECTION ({products.length} FORMULATIONS)</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-black text-[#0a193d] tracking-tight">
-            Explore All Playtime Formulations
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1.5">
-            Discover our complete lineup of certified Ayurvedic wellness solutions. 100% plain box delivery guaranteed.
-          </p>
-        </div>
+      {/* SECTION 4: 2x2 Bento Category Collection Cards */}
+      <AeroBentoCategories
+        onSelectCategory={(cat) => {
+          setSelectedCategory(cat);
+          scrollToBestsellers();
+        }}
+      />
 
-        {/* Category Pills & Search Controls */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-slate-200">
-          {/* Category Filter Tabs */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto py-1 scrollbar-none">
-            {[
-              { id: 'all', label: `All Products (${products.length})` },
-              { id: 'extend', label: 'Extend Range' },
-              { id: 'supplements', label: 'Supplements & Shilajit' },
-              { id: 'lubes', label: 'Lubricants & Glides' },
-              { id: 'couples', label: 'Couples' },
-            ].map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id as CategoryType)}
-                className={`px-4 py-2 rounded-xl text-xs font-black whitespace-nowrap transition-all cursor-pointer ${
-                  selectedCategory === cat.id
-                    ? 'bg-[#051336] text-white shadow-md shadow-blue-900/20'
-                    : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Quick Filter Search */}
-          <div className="relative w-full md:w-72">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search formulations..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-xs bg-white focus:outline-hidden focus:ring-2 focus:ring-[#051336]/20 font-medium"
-            />
-          </div>
-        </div>
-
-        {/* Products Grid */}
-        {filteredProducts.length === 0 ? (
-          <div className="py-16 text-center border-2 border-dashed border-slate-200 rounded-3xl bg-white/50">
-            <Package className="w-12 h-12 text-slate-300 mx-auto mb-2" />
-            <h3 className="text-base font-bold text-slate-700">No formulations found</h3>
-            <p className="text-xs text-slate-400 mt-1">Try clearing your search query or selecting another category.</p>
-            <button
-              onClick={() => {
-                setSelectedCategory('all');
-                setSearchQuery('');
-              }}
-              className="mt-4 px-4 py-2 bg-[#051336] text-white rounded-xl text-xs font-bold cursor-pointer"
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((prod) => (
-              <ProductCard
-                key={prod.id}
-                product={prod}
-                onAddToCart={(p, pack) => handleAddToCart(p, pack, 1)}
-                onQuickView={(p) => setQuickViewProduct(p)}
-              />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Influencer Video Reels Section */}
+      {/* SECTION 5: Influencer Video Reels & Unboxing UGC */}
       <InfluencerVideoSection
         onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
       />
 
-      {/* The Power Duo Kit Banner */}
-      <DuoBundleBanner
-        onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
-      />
+      {/* SECTION 6: 6-Column Ayurvedic Science & Clinical Standards Grid */}
+      <AeroTechnologyGrid />
 
-      {/* Gamified Lucky Spin Teaser Banner */}
-      <SpinTeaserBanner />
+      {/* SECTION 7: 4 Horizontal Trust Badges Strip */}
+      <AeroTrustStrip />
 
-      {/* Step-by-Step Visual Blind Unboxing Experience */}
-      <UnboxingExperienceSection />
-
-      {/* Verified Customer Reviews & Testimonials */}
-      <CustomerReviews />
-
-      {/* Frequently Asked Questions */}
-      <FAQSection />
-
-      {/* Brand Footer */}
-      <Footer
+      {/* Clean Minimalist Footer (From Reference Design) */}
+      <AeroFooter
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
-          scrollToCatalog();
+          scrollToBestsellers();
         }}
         onOpenBillingModal={() => setIsBillingModalOpen(true)}
       />
-
-      {/* Floating Discreet WhatsApp Concierge */}
-      <WhatsAppChatButton />
 
       {/* Discreet Billing Preview Modal */}
       <DiscreetBillingPreviewModal
@@ -268,14 +172,11 @@ export default function Home() {
         onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
       />
 
-      {/* In-House Doctor & Medical Panel Consultation Drawer */}
+      {/* In-House Doctor Consultation Drawer */}
       <DoctorConsultationDrawer
         isOpen={isDoctorDrawerOpen}
         onClose={() => setIsDoctorDrawerOpen(false)}
       />
-
-      {/* Gamified Interactive Spin The Wheel & Scratch Card */}
-      <SpinAndWinModal />
 
       {/* Product Quick View Modal */}
       {quickViewProduct && (

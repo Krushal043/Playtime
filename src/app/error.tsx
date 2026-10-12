@@ -26,8 +26,7 @@ export default function ErrorPage({ error, reset }: ErrorProps) {
   }, [error]);
 
   return (
-    <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col selection:bg-red-600/30 selection:text-white">
-      <PromoBanner />
+    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-4 sm:px-6 py-16 sm:py-24">

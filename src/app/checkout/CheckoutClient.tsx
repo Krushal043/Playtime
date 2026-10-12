@@ -250,23 +250,24 @@ export default function CheckoutClient() {
 
   if (cart.length === 0) {
     return (
-      <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col">
-        <PromoBanner />
+      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
         <Navbar />
-        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-4">
-          <div className="w-16 h-16 rounded-full bg-[#0c1e48] text-slate-200 flex items-center justify-center mx-auto border-2 border-slate-300/80 shadow-lg">
-            <ShieldCheck className="w-8 h-8 text-red-500" />
+        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-6">
+          <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-5">
+            <div className="w-16 h-16 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mx-auto border border-rose-200/80 shadow-md">
+              <ShieldCheck className="w-8 h-8" />
+            </div>
+            <h2 className="text-2xl font-black text-[#051336]">Your Bag is Empty</h2>
+            <p className="text-xs text-slate-600 leading-relaxed font-medium">
+              Please add an intimate wellness formulation or couples bundle to your bag to proceed with 100% discreet delivery.
+            </p>
+            <Link
+              href="/"
+              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] hover:shadow-[0_6px_22px_rgba(225,29,72,0.6)] transition-all"
+            >
+              Explore Formulations &rarr;
+            </Link>
           </div>
-          <h2 className="text-2xl font-black text-[#0a1b3f]">Your Bag is Empty</h2>
-          <p className="text-xs text-slate-700 leading-relaxed font-medium">
-            Please add an intimate wellness product or couple bundle to your bag to proceed with discreet checkout.
-          </p>
-          <Link
-            href="/"
-            className="inline-block px-6 py-3 rounded-xl btn-red text-white text-xs font-black uppercase tracking-wider"
-          >
-            Explore Catalog &rarr;
-          </Link>
         </div>
         <Footer />
       </div>
@@ -274,8 +275,7 @@ export default function CheckoutClient() {
   }
 
   return (
-    <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col selection:bg-red-600/30 selection:text-white">
-      <PromoBanner />
+    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
       <Navbar />
 
       {/* Checkout Progress Stepper in Frosted Pearl */}
@@ -650,14 +650,63 @@ export default function CheckoutClient() {
                     </div>
                   </label>
 
-                  {/* Custom Delivery Instructions */}
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      Special Delivery Instructions (Optional)
-                    </label>
+                  {/* Custom Delivery Instructions with 1-Click Smart Presets */}
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-bold text-slate-700">
+                        Special Delivery Instructions (Optional)
+                      </label>
+                      <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        🔒 Printed on Outer Courier Label
+                      </span>
+                    </div>
+
+                    {/* 1-Click Smart AI Discreet Presets */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pb-1">
+                      {[
+                        {
+                          icon: '🏢',
+                          title: 'Society Gate Drop',
+                          text: 'Leave with building security guard. State contents as Books / Documents.',
+                        },
+                        {
+                          icon: '🤫',
+                          title: 'Silent Doorstep Drop',
+                          text: 'Leave on shoe rack outside main door. Ring bell only once, no phone calls.',
+                        },
+                        {
+                          icon: '📞',
+                          title: 'Private In-Hand Call',
+                          text: 'Call 5 mins before arrival. Hand over strictly to recipient in person only.',
+                        },
+                        {
+                          icon: '💼',
+                          title: 'Office Front Desk',
+                          text: 'Leave sealed plain envelope at office reception. Do not call desk phone.',
+                        },
+                      ].map((preset) => (
+                        <button
+                          key={preset.title}
+                          type="button"
+                          onClick={() => setCustomDeliveryNote(preset.text)}
+                          className={`p-2.5 rounded-xl border text-left text-xs transition-all cursor-pointer flex items-start gap-2 ${
+                            customDeliveryNote === preset.text
+                              ? 'bg-rose-50 border-rose-300 text-rose-950 font-bold'
+                              : 'bg-white hover:bg-slate-50 border-slate-200 text-slate-700'
+                          }`}
+                        >
+                          <span className="text-sm shrink-0">{preset.icon}</span>
+                          <div>
+                            <div className="font-bold text-[11px] text-[#0a193d]">{preset.title}</div>
+                            <div className="text-[10px] text-slate-500 line-clamp-1">{preset.text}</div>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+
                     <textarea
                       rows={2}
-                      placeholder="e.g. Leave with building security in sealed pouch, or call 10 mins before reaching..."
+                      placeholder="Or type custom note e.g. Call before reaching, do not hand to neighbors..."
                       value={customDeliveryNote}
                       onChange={(e) => setCustomDeliveryNote(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-white text-[#0a193d] focus:outline-none focus:border-rose-500 text-xs font-medium shadow-2xs"

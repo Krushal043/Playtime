@@ -2,10 +2,12 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { TESTIMONIALS } from '@/data/products';
+import { useSettings } from '@/context/SettingsContext';
 import { Star, ShieldCheck, CheckCircle2, MessageSquareHeart } from 'lucide-react';
 
 export default function CustomerReviews() {
+  const { testimonials } = useSettings();
+
   return (
     <section id="reviews" className="py-16 max-w-7xl mx-auto px-4 sm:px-6">
       
@@ -40,16 +42,16 @@ export default function CustomerReviews() {
 
       {/* Review Cards Grid / Mobile Horizontal Swipe Reel */}
       <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-4 sm:gap-6 pb-2 scrollbar-none">
-        {TESTIMONIALS.map((review, idx) => (
+        {testimonials.map((review, idx) => (
           <div
-            key={idx}
+            key={review.id || idx}
             className="w-[84vw] sm:w-[360px] md:w-auto shrink-0 md:shrink snap-center glass-card card-3d-hover p-5 sm:p-6 rounded-3xl flex flex-col justify-between"
           >
             <div>
               {/* Star rating & Date */}
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div className="flex text-amber-500">
-                  {[...Array(review.rating)].map((_, i) => (
+                  {[...Array(review.rating || 5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
@@ -59,44 +61,31 @@ export default function CustomerReviews() {
                 </span>
               </div>
 
-              {/* Product purchased tag */}
-              <div className="mb-3">
-                <span className="px-3 py-1 rounded-full bg-slate-100/90 text-slate-700 border border-slate-200/80 text-[10px] font-bold inline-block">
-                  Purchased: {review.product}
-                </span>
-              </div>
-
-              {/* Comment text */}
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium mb-6">
+              {/* Review Text */}
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium mb-4 italic">
                 &ldquo;{review.comment}&rdquo;
               </p>
             </div>
 
-            {/* Author info */}
-            <div className="flex items-center gap-3 pt-4 border-t border-slate-200/60">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-slate-100 shrink-0 border border-slate-200">
+            {/* Author Footer */}
+            <div className="pt-4 border-t border-slate-200/70 flex items-center gap-3">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-200 shrink-0">
                 <Image
-                  src={review.avatar}
+                  src={review.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'}
                   alt={review.name}
                   fill
                   className="object-cover"
                 />
               </div>
-              <div>
-                <h4 className="text-xs font-black text-[#0a193d]">{review.name}</h4>
-                <p className="text-[11px] text-slate-500 font-medium">{review.location}</p>
+              <div className="min-w-0">
+                <h4 className="text-xs font-bold text-[#0a193d] truncate">{review.name}</h4>
+                <p className="text-[10px] text-slate-500 font-semibold">{review.location}</p>
+                <p className="text-[9px] text-blue-900 font-bold truncate mt-0.5">Purchased: {review.product}</p>
               </div>
             </div>
-
           </div>
         ))}
       </div>
-
-      {/* Mobile Swipe Hint */}
-      <div className="md:hidden flex items-center justify-center gap-1.5 pt-3 text-[11px] text-slate-500 font-semibold">
-        <span>&larr; Swipe verified customer reviews &rarr;</span>
-      </div>
-
     </section>
   );
 }

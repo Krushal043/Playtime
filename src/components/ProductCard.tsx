@@ -50,14 +50,14 @@ export default function ProductCard({ product, onAddToCart, onQuickView }: Produ
       
       <div>
         {/* Product Image Container */}
-        <div className="relative aspect-4/3 w-full bg-slate-100 overflow-hidden">
-          <Link href={`/products/${product.id}`} className="absolute inset-0 block">
+        <div className="relative h-48 w-full bg-gradient-to-b from-slate-50 via-white to-slate-100/60 p-3 overflow-hidden">
+          <Link href={`/products/${product.id}`} className="relative w-full h-full flex items-center justify-center block">
             <Image
               src={product.image}
               alt={product.name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-108"
+              className="object-contain drop-shadow-sm transition-transform duration-500 group-hover:scale-105"
             />
           </Link>
 

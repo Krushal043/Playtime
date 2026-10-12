@@ -18,14 +18,13 @@ export default function FloatingStickyBuyBar({
   selectedPack,
   onAddToCart,
   onBuyNow,
-  threshold = 320
+  threshold = 320,
 }: FloatingStickyBuyBarProps) {
   const [show, setShow] = useState(false);
   const [added, setAdded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show sticky bar when user scrolls past threshold so they don't have to scroll back up
       setShow(window.scrollY > threshold);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -47,11 +46,11 @@ export default function FloatingStickyBuyBar({
           : 'translate-y-16 opacity-0 pointer-events-none'
       }`}
     >
-      <div className="bg-white/95 backdrop-blur-2xl rounded-full border border-slate-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.18)] px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between sm:justify-start gap-2.5 sm:gap-4 text-[#0a193d]">
+      <div className="bg-white/95 backdrop-blur-2xl rounded-full border border-slate-200/90 shadow-[0_16px_50px_rgba(5,19,54,0.22)] px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between sm:justify-start gap-2.5 sm:gap-4 text-[#051336]">
         
         {/* Product Thumbnail + Name & Variant */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-          <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-slate-200 shrink-0 bg-slate-50 shadow-2xs">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-slate-200 shrink-0 bg-slate-50 shadow-2xs">
             <Image
               src={product.image}
               alt={product.name}
@@ -61,10 +60,10 @@ export default function FloatingStickyBuyBar({
           </div>
 
           <div className="min-w-0">
-            <h4 className="text-xs sm:text-sm font-black text-[#0a193d] truncate leading-tight max-w-[95px] xs:max-w-[130px] sm:max-w-[180px]">
+            <h4 className="text-xs sm:text-sm font-black text-[#051336] truncate leading-tight max-w-[100px] xs:max-w-[140px] sm:max-w-[200px]">
               {product.name}
             </h4>
-            <p className="text-[10px] text-slate-500 font-medium truncate">
+            <p className="text-[10px] text-slate-500 font-semibold truncate">
               {selectedPack.label}
             </p>
           </div>
@@ -75,23 +74,22 @@ export default function FloatingStickyBuyBar({
 
         {/* Price & Taxes */}
         <div className="shrink-0 text-left">
-          <span className="text-sm sm:text-base font-black text-[#0a193d] block leading-tight">
+          <span className="text-sm sm:text-base font-black text-[#051336] block leading-tight">
             ₹{selectedPack.price.toLocaleString('en-IN')}
           </span>
-          <span className="text-[9px] text-slate-400 font-medium block leading-none">
-            Inclusive of taxes
+          <span className="text-[9px] text-slate-400 font-semibold block leading-none">
+            Free Delivery
           </span>
         </div>
 
-        {/* Action Buttons: Add To Cart (Outline) & Buy Now (Solid Accent) */}
+        {/* Action Buttons */}
         <div className="flex items-center gap-2 shrink-0">
           
-          {/* Outline ADD TO CART Button */}
-          {/* Liquid Chrome Silver ADD TO CART Button */}
+          {/* Add to Bag Button */}
           <button
             type="button"
             onClick={handleAdd}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full btn-silver text-[#051336] text-[11px] sm:text-xs font-black uppercase tracking-wider active:scale-95 transition-all cursor-pointer whitespace-nowrap shadow-xs"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 text-[#051336] text-[11px] sm:text-xs font-black uppercase tracking-wider active:scale-95 transition-all cursor-pointer whitespace-nowrap shadow-xs"
           >
             {added ? (
               <>
@@ -100,19 +98,19 @@ export default function FloatingStickyBuyBar({
               </>
             ) : (
               <>
-                <ShoppingBag className="w-3.5 h-3.5" />
-                <span>Add To Cart</span>
+                <ShoppingBag className="w-3.5 h-3.5 text-blue-900" />
+                <span>Add To Bag</span>
               </>
             )}
           </button>
 
-          {/* Solid BUY NOW Button (Logo Ayurvedic Leaf Green Gradient) */}
+          {/* Buy Now Button */}
           <button
             type="button"
             onClick={onBuyNow}
-            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 hover:from-emerald-700 hover:to-teal-700 active:scale-95 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-md hover:shadow-lg transition-all cursor-pointer whitespace-nowrap btn-shimmer"
+            className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 active:scale-95 text-white text-[11px] sm:text-xs font-black uppercase tracking-wider flex items-center gap-1.5 shadow-[0_4px_16px_rgba(225,29,72,0.45)] hover:shadow-[0_6px_22px_rgba(225,29,72,0.6)] transition-all cursor-pointer whitespace-nowrap"
           >
-            <Zap className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+            <Zap className="w-3.5 h-3.5 fill-current text-white" />
             <span>Buy Now</span>
           </button>
 

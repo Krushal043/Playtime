@@ -39,8 +39,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col selection:bg-red-600/30 selection:text-white">
-      <PromoBanner />
+    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
       <Navbar />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-8 py-12 sm:py-16 space-y-12 w-full">

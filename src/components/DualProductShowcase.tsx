@@ -64,8 +64,8 @@ export default function DualProductShowcase({
         </p>
       </div>
 
-      {/* Centered, Modern 2-Product Grid in Ultra-Luxury Frosted Pearl Cards */}
-      <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+      {/* Heroic 2-Product Showcase with Large Studio Image Stage */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
         {displayProducts.map((product) => {
           const fallbackPack = {
             packSize: 1,
@@ -83,85 +83,99 @@ export default function DualProductShowcase({
           return (
             <div
               key={product.id}
-              className="glass-card card-3d-hover rounded-3xl overflow-hidden flex flex-col justify-between group transition-all duration-500 hover:border-emerald-500/40"
+              className="group relative bg-white/95 rounded-3xl border border-slate-200/90 shadow-lg hover:shadow-2xl hover:border-slate-300 transition-all duration-500 overflow-hidden flex flex-col justify-between"
             >
-              <div>
-                {/* Product Image Stage */}
-                <Link
-                  href={`/products/${product.id}`}
-                  className="relative aspect-4/3 w-full bg-gradient-to-b from-white via-slate-50 to-slate-100/60 overflow-hidden block"
-                >
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                  />
+              {/* Top: Large Studio Hero Image Stage */}
+              <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[500px] bg-gradient-to-b from-[#f8f9fb] via-[#fcfbf9] to-slate-100/70 border-b border-slate-100 overflow-hidden flex items-center justify-center">
+                {/* Ambient Soft Studio Glow */}
+                <div className="absolute inset-0 bg-radial from-white via-transparent to-slate-200/30 pointer-events-none" />
 
-                  {/* Badges on Top Left */}
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10 pointer-events-none">
+                {/* Floating Badges on Top */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between gap-2 z-20 pointer-events-none">
+                  <div className="flex flex-wrap items-center gap-2">
                     {product.badge && (
-                      <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm transition-transform duration-300 group-hover:scale-105 ${
-                        isExtend ? 'btn-navy-gradient text-white' : 'bg-emerald-800 text-emerald-100 border border-emerald-600/50'
+                      <span className={`px-3.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider shadow-md backdrop-blur-md ${
+                        isExtend ? 'btn-navy-gradient text-white' : 'bg-slate-900 text-white'
                       }`}>
                         {product.badge}
                       </span>
                     )}
                     {currentPack.discount && (
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-slate-900/90 text-amber-300 border border-amber-400/40 shadow-xs backdrop-blur-md">
+                      <span className="px-3 py-1.5 rounded-full text-[11px] font-black bg-amber-400 text-slate-950 shadow-md">
                         {currentPack.discount}
                       </span>
                     )}
                   </div>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 border border-slate-200/80 text-[11px] font-bold text-slate-700 shadow-md backdrop-blur-md">
+                    <EyeOff className="w-3.5 h-3.5 text-emerald-600" />
+                    Plain Box
+                  </span>
+                </div>
 
-                  {/* Plain Box Badge on Top Right */}
-                  <div className="absolute top-3 right-3 z-10 pointer-events-none">
-                    <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 border border-slate-200/90 text-[10px] font-bold text-slate-700 shadow-xs backdrop-blur-md">
-                      <EyeOff className="w-3.5 h-3.5 text-emerald-600" />
-                      Plain Box
-                    </span>
-                  </div>
-
-                  {/* Subtle View Page Hint on Hover with Smooth Transform */}
-                  <div className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-white/95 text-[#0a193d] text-[10px] font-black opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 backdrop-blur-md flex items-center gap-1.5 border border-slate-200/80 shadow-md">
-                    <span>View Clinical Specs</span>
-                    <ArrowRight className="w-3 h-3 text-rose-600 transition-transform duration-200 group-hover:translate-x-0.5" />
+                {/* Large Product Image (Full bottle visible, high impact) */}
+                <Link
+                  href={`/products/${product.id}`}
+                  className="relative w-full h-full flex items-center justify-center p-8 sm:p-12 z-10"
+                >
+                  <div className="relative w-full h-full transition-transform duration-700 ease-out group-hover:scale-106">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className="object-contain drop-shadow-2xl"
+                      priority
+                    />
                   </div>
                 </Link>
 
-                {/* Refined Product Details */}
-                <div className="p-5 sm:p-6 space-y-3.5">
-                  
-                  {/* Rating & Review Count */}
-                  <div className="flex items-center gap-1.5 text-xs">
-                    <div className="flex items-center text-amber-500">
-                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                {/* Subtle Hover Action Pill */}
+                <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <Link
+                    href={`/products/${product.id}`}
+                    className="px-4 py-2 rounded-full bg-white/95 text-[#0a193d] text-xs font-black shadow-lg backdrop-blur-md flex items-center gap-1.5 border border-slate-200"
+                  >
+                    <span>Inspect Details</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-rose-600" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Bottom: Luxury Product Details & Action Bar */}
+              <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 bg-white">
+                <div>
+                  {/* Rating & Ayurvedic Tag */}
+                  <div className="flex items-center justify-between gap-2 text-xs mb-2.5">
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex items-center text-amber-500">
+                        <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      </div>
+                      <span className="font-black text-sm text-[#0a193d]">{product.rating}</span>
+                      <span className="text-xs text-slate-500 font-medium">({product.reviewsCount.toLocaleString()} reviews)</span>
                     </div>
-                    <span className="font-black text-[#0a193d]">{product.rating}</span>
-                    <span className="text-[11px] text-slate-500 font-medium">({product.reviewsCount.toLocaleString()})</span>
+                    <span className="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
+                      100% Ayurvedic
+                    </span>
                   </div>
 
                   {/* Title & Tagline */}
-                  <div>
-                    <Link href={`/products/${product.id}`} className="block group/title">
-                      <h3 className="text-lg font-black text-[#0a193d] group-hover/title:text-rose-600 transition-colors line-clamp-1 tracking-tight">
-                        {product.name}
-                      </h3>
-                    </Link>
-                    <p className="text-xs text-slate-500 line-clamp-1 mt-0.5 font-medium">
-                      {product.tagline}
-                    </p>
-                  </div>
+                  <Link href={`/products/${product.id}`} className="block group/title">
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0a193d] group-hover/title:text-rose-600 transition-colors line-clamp-1 tracking-tight">
+                      {product.name}
+                    </h3>
+                  </Link>
+                  <p className="text-xs sm:text-sm text-slate-500 line-clamp-2 mt-1.5 font-medium leading-relaxed">
+                    {product.tagline}
+                  </p>
 
-                  {/* Sleek Pack Selector Chips */}
-                  <div className="pt-1">
-                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 mb-2">
+                  {/* Pack Selector Chips */}
+                  <div className="mt-5 pt-4 border-t border-slate-100">
+                    <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-2.5">
                       <span className="uppercase tracking-wider">Select Pack:</span>
-                      <span className="text-rose-600 font-extrabold">{currentPack.label}</span>
+                      <span className="text-rose-600 font-black">{currentPack.label}</span>
                     </div>
 
-                    <div className={`grid gap-2 ${safePacks.length === 2 ? 'grid-cols-2' : safePacks.length === 1 ? 'grid-cols-1' : 'grid-cols-3'}`}>
+                    <div className={`grid gap-2.5 ${safePacks.length === 2 ? 'grid-cols-2' : safePacks.length === 1 ? 'grid-cols-1' : 'grid-cols-3'}`}>
                       {safePacks.map((pack, idx) => {
                         const isSelected = selectedIdx === idx;
                         return (
@@ -169,14 +183,14 @@ export default function DualProductShowcase({
                             key={idx}
                             type="button"
                             onClick={() => handlePackChange(product.id, idx)}
-                            className={`py-2 px-2.5 rounded-2xl text-xs font-black transition-all duration-200 cursor-pointer flex flex-col items-center justify-center active:scale-95 ${
+                            className={`py-2 px-3 rounded-2xl text-xs font-black transition-all duration-200 cursor-pointer flex flex-col items-center justify-center active:scale-95 ${
                               isSelected
                                 ? 'bg-gradient-to-r from-[#051336] via-[#0c245c] to-[#1d4ed8] text-white shadow-md ring-1 ring-blue-400/50'
                                 : 'bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700'
                             }`}
                           >
                             <span>Pack {pack.packSize}</span>
-                            <span className={`text-[10px] ${isSelected ? 'text-amber-300 font-bold' : 'text-slate-500'}`}>
+                            <span className={`text-[10px] ${isSelected ? 'text-amber-300 font-extrabold' : 'text-slate-500'}`}>
                               {pack.discount}
                             </span>
                           </button>
@@ -184,63 +198,61 @@ export default function DualProductShowcase({
                       })}
                     </div>
                   </div>
-
                 </div>
-              </div>
 
-              {/* Price & Action Footer - Compressed Side by Side */}
-              <div className="p-4 sm:p-5 pt-3 border-t border-slate-100 bg-[#fbfbfa]/60">
-                <div className="flex items-center justify-between gap-3">
-                  <div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-xl sm:text-2xl font-black text-[#051336]">
-                        ₹{currentPack.price.toLocaleString('en-IN')}
-                      </span>
-                      {currentPack.originalPrice > currentPack.price && (
-                        <span className="text-xs text-slate-400 line-through font-semibold">
-                          ₹{currentPack.originalPrice.toLocaleString('en-IN')}
+                {/* Price & Action Row */}
+                <div className="mt-6 pt-4 border-t border-slate-100">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-2xl sm:text-3xl font-black text-[#051336]">
+                          ₹{currentPack.price.toLocaleString('en-IN')}
                         </span>
-                      )}
+                        {currentPack.originalPrice > currentPack.price && (
+                          <span className="text-sm text-slate-400 line-through font-semibold">
+                            ₹{currentPack.originalPrice.toLocaleString('en-IN')}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-xs font-black text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-full inline-block mt-1">
+                        Save ₹{(currentPack.originalPrice - currentPack.price).toLocaleString('en-IN')}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-black text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-full inline-block mt-0.5">
-                      Save ₹{(currentPack.originalPrice - currentPack.price).toLocaleString('en-IN')}
-                    </span>
+
+                    {/* Add to Bag Button */}
+                    <button
+                      onClick={() => handleAdd(product)}
+                      className={`py-3 px-6 sm:px-8 rounded-full text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all whitespace-nowrap active:scale-95 ${
+                        isAdded
+                          ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg'
+                          : 'btn-navy-red shadow-lg hover:shadow-xl'
+                      }`}
+                    >
+                      {isAdded ? (
+                        <>
+                          <Check className="w-4 h-4 stroke-[3]" />
+                          <span>Added!</span>
+                        </>
+                      ) : (
+                        <>
+                          <ShoppingBag className="w-4 h-4" />
+                          <span>Add To Bag</span>
+                        </>
+                      )}
+                    </button>
                   </div>
 
-                  {/* Primary Pill Button with Logo Ribbon Gradient & Shimmer */}
-                  <button
-                    onClick={() => handleAdd(product)}
-                    className={`py-3 px-5 sm:px-6 rounded-full text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all whitespace-nowrap active:scale-95 ${
-                      isAdded
-                        ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-md'
-                        : 'btn-navy-red shadow-lg'
-                    }`}
-                  >
-                    {isAdded ? (
-                      <>
-                        <Check className="w-4 h-4 stroke-[3]" />
-                        <span>Added!</span>
-                      </>
-                    ) : (
-                      <>
-                        <ShoppingBag className="w-4 h-4" />
-                        <span>Add To Bag</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Direct Link */}
-                <div className="text-center pt-2">
-                  <Link
-                    href={`/products/${product.id}`}
-                    className="text-[11px] font-bold text-slate-500 hover:text-rose-600 transition-colors inline-flex items-center gap-1"
-                  >
-                    <span>View Product Details &amp; Clinical Specs &rarr;</span>
-                  </Link>
+                  {/* Clinical Specs Link */}
+                  <div className="text-center pt-3">
+                    <Link
+                      href={`/products/${product.id}`}
+                      className="text-xs font-bold text-slate-500 hover:text-rose-600 transition-colors inline-flex items-center gap-1"
+                    >
+                      <span>View Full Product Details &amp; Clinical Specs &rarr;</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-
             </div>
           );
         })}

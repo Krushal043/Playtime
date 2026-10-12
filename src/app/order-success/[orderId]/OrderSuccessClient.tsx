@@ -97,20 +97,24 @@ function OrderSuccessContent() {
 
   if (accessDenied) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
-        <PromoBanner />
+      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
         <Navbar />
-        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-4">
-          <div className="w-14 h-14 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto border border-amber-200">
-            <Lock className="w-7 h-7" />
+        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-6">
+          <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-5">
+            <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto border border-amber-200/80 shadow-md">
+              <Lock className="w-8 h-8" />
+            </div>
+            <h2 className="text-xl font-black text-[#051336]">Protected Order Access</h2>
+            <p className="text-xs text-slate-600 leading-relaxed font-medium">
+              This order contains confidential delivery details and is protected with end-to-end token validation. Please use the exact confirmation link sent to your device.
+            </p>
+            <Link
+              href="/"
+              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] transition-all"
+            >
+              Return Home &rarr;
+            </Link>
           </div>
-          <h2 className="text-xl font-black text-slate-900">Protected Order Access</h2>
-          <p className="text-xs text-slate-500 leading-relaxed">
-            This order contains sensitive customer details and is protected with end-to-end token validation. Please use the exact confirmation link sent to your device.
-          </p>
-          <Link href="/" className="inline-block px-5 py-2.5 rounded-xl btn-gradient text-white text-xs font-black">
-            Return Home &rarr;
-          </Link>
         </div>
         <Footer />
       </div>
@@ -119,15 +123,19 @@ function OrderSuccessContent() {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
-        <PromoBanner />
+      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
         <Navbar />
-        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-4">
-          <h2 className="text-xl font-black text-slate-900">Order Not Found</h2>
-          <p className="text-xs text-slate-500">We could not find the details for this order.</p>
-          <Link href="/" className="inline-block px-5 py-2.5 rounded-xl btn-gradient text-white text-xs font-black">
-            Return Home &rarr;
-          </Link>
+        <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-6">
+          <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-5">
+            <h2 className="text-xl font-black text-[#051336]">Order Not Found</h2>
+            <p className="text-xs text-slate-600 font-medium">We could not find the details for this order.</p>
+            <Link
+              href="/"
+              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] transition-all"
+            >
+              Return Home &rarr;
+            </Link>
+          </div>
         </div>
         <Footer />
       </div>
@@ -135,8 +143,7 @@ function OrderSuccessContent() {
   }
 
   return (
-    <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col selection:bg-red-600/30 selection:text-white">
-      <PromoBanner />
+    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
       <Navbar />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-12 w-full space-y-8">

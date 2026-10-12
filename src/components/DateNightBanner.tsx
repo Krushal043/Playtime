@@ -59,7 +59,7 @@ export default function DateNightBanner({ onSelectCategory }: DateNightBannerPro
               <button
                 onClick={() => {
                   onSelectCategory('couples');
-                  const el = document.getElementById('catalog-section');
+                  const el = document.getElementById('flagship-section') || document.getElementById('catalog-section');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="btn-gradient px-8 py-4 rounded-xl text-xs uppercase tracking-wider flex items-center gap-2 cursor-pointer group"

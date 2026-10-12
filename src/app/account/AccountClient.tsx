@@ -5,9 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useAuth } from '@/context/AuthContext';
 import { Address } from '@/types';
-import PromoBanner from '@/components/PromoBanner';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import AeroNavbar from '@/components/AeroNavbar';
+import AeroFooter from '@/components/AeroFooter';
 import {
   Package,
   MapPin,
@@ -75,51 +74,51 @@ export default function AccountClient() {
 
   if (!user) {
     return (
-      <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col">
-        <PromoBanner />
-        <Navbar />
+      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+        <AeroNavbar />
 
         <main className="flex-1 max-w-lg mx-auto px-4 py-16 text-center space-y-6">
-          <div className="glass-card-elevated rounded-3xl p-8 border border-white/90 shadow-2xl space-y-6">
-            <div className="w-16 h-16 rounded-full bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center mx-auto shadow-inner">
+          <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-6">
+            <div className="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200/80 text-rose-600 flex items-center justify-center mx-auto shadow-sm">
               <UserIcon className="w-8 h-8" />
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-2xl font-black text-[#0a193d]">Sign In to Your Account</h1>
-              <p className="text-xs text-slate-600 leading-relaxed max-w-sm mx-auto">
+              <h1 className="text-2xl font-black text-[#051336]">Sign In to Your Account</h1>
+              <p className="text-xs text-slate-600 leading-relaxed max-w-sm mx-auto font-medium">
                 Access your discreet order tracking, confidential invoices, and manage saved delivery addresses.
               </p>
             </div>
 
             <div className="space-y-3 pt-2">
               <button
+                type="button"
                 onClick={() => setIsAuthModalOpen(true)}
-                className="w-full py-4 rounded-full btn-navy-red text-white text-xs font-black uppercase tracking-wider shadow-lg hover:shadow-xl cursor-pointer"
+                className="w-full py-4 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] hover:shadow-[0_6px_22px_rgba(225,29,72,0.6)] cursor-pointer transition-all active:scale-95"
               >
                 Sign In with Mobile OTP / Email &rarr;
               </button>
 
               <button
+                type="button"
                 onClick={demoLogin}
-                className="w-full py-3.5 rounded-full bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-300 text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-sm transition-colors"
+                className="w-full py-3.5 rounded-full bg-[#051336] hover:bg-[#091b4a] text-slate-100 border border-blue-500/30 text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-md transition-all active:scale-95"
               >
-                <Zap className="w-4 h-4 fill-current text-amber-600" />
+                <Zap className="w-4 h-4 fill-current text-amber-400" />
                 <span>⚡ 1-Click Instant Demo Login (Rahul Sharma)</span>
               </button>
             </div>
           </div>
         </main>
 
-        <Footer />
+        <AeroFooter />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen silver-lighting-bg text-slate-900 flex flex-col selection:bg-red-600/30 selection:text-white">
-      <PromoBanner />
-      <Navbar />
+    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+      <AeroNavbar />
 
       <main className="flex-1 max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-12 w-full space-y-8">
         
@@ -501,7 +500,7 @@ export default function AccountClient() {
 
       </main>
 
-      <Footer />
+      <AeroFooter />
     </div>
   );
 }
