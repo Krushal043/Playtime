@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { Star, Heart, ShoppingBag, Check, ChevronLeft, ChevronRight, ArrowRight, Eye, Sparkles } from 'lucide-react';
 import { Product, ProductPack } from '@/types';
 import { ProductCardSkeleton } from '@/components/Skeleton';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { useRipple } from '@/hooks/useParallax';
 
 interface AeroBestsellersRowProps {
   products: Product[];
@@ -25,7 +23,6 @@ export default function AeroBestsellersRow({
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
   const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useScrollReveal<HTMLElement>();
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -56,9 +53,9 @@ export default function AeroBestsellersRow({
   };
 
   return (
-    <section ref={sectionRef} id="flagship-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
+    <section id="flagship-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 reveal">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0A] uppercase tracking-tight">
@@ -132,7 +129,8 @@ export default function AeroBestsellersRow({
           return (
             <div
               key={product.id}
-              className={`reveal stagger-${Math.min(idx + 1, 4)} product-card-3d group relative rounded-3xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs flex flex-col justify-between min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink perspective-container`}
+              className="product-card-3d group relative rounded-3xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs flex flex-col justify-between min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink perspective-container animate-fade-in-up"
+              style={{ animationDelay: `${idx * 0.08}s` }}
             >
               {/* 3D depth shine overlay */}
               <div className="card-3d-shine" />

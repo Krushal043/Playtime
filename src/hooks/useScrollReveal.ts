@@ -3,19 +3,13 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * useScrollReveal — IntersectionObserver hook that adds
- * the "revealed" class to any element with [data-reveal] or
- * the CSS classes: reveal, reveal-left, reveal-right, reveal-zoom
- *
- * Usage:
- *   const ref = useScrollReveal();
- *   <section ref={ref}>
- *     <div className="reveal stagger-1">...</div>
- *   </section>
+ * useScrollReveal — IntersectionObserver hook with MutationObserver support
+ * so dynamically loaded items (like products fetched from API) are automatically
+ * observed and revealed without getting stuck invisible.
  */
 export function useScrollReveal<T extends HTMLElement = HTMLElement>(
-  threshold = 0.12,
-  rootMargin = '0px 0px -60px 0px'
+  threshold = 0.05,
+  rootMargin = '50px 0px 50px 0px'
 ) {
   const containerRef = useRef<T>(null);
 
@@ -23,11 +17,16 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(
     const container = containerRef.current;
     if (!container) return;
 
-    const targets = container.querySelectorAll<HTMLElement>(
-      '.reveal, .reveal-left, .reveal-right, .reveal-zoom, [data-reveal]'
-    );
-
-    if (!targets.length) return;
+    const observeElements = (parent: HTMLElement, observer: IntersectionObserver) => {
+      const targets = parent.querySelectorAll<HTMLElement>(
+        '.reveal, .reveal-left, .reveal-right, .reveal-zoom, [data-reveal]'
+      );
+      targets.forEach((el) => {
+        if (!el.classList.contains('revealed')) {
+          observer.observe(el);
+        }
+      });
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -41,26 +40,40 @@ export function useScrollReveal<T extends HTMLElement = HTMLElement>(
       { threshold, rootMargin }
     );
 
-    targets.forEach((el) => observer.observe(el));
+    // Initial pass
+    observeElements(container, observer);
 
-    return () => observer.disconnect();
+    // Watch for dynamic DOM changes (e.g. products finishing loading)
+    const mutationObserver = new MutationObserver(() => {
+      observeElements(container, observer);
+    });
+
+    mutationObserver.observe(container, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [threshold, rootMargin]);
 
   return containerRef;
 }
 
 /**
- * Global scroll reveal — auto-discovers all reveal elements on the page.
- * Call once in a layout component.
+ * Global scroll reveal — auto-discovers all reveal elements on the page,
+ * watching document body mutations so new elements are always observed.
  */
 export function useGlobalScrollReveal(
-  threshold = 0.1,
-  rootMargin = '0px 0px -50px 0px'
+  threshold = 0.05,
+  rootMargin = '50px 0px 50px 0px'
 ) {
   useEffect(() => {
-    const selectors = '.reveal, .reveal-left, .reveal-right, .reveal-zoom';
-    const targets = document.querySelectorAll<HTMLElement>(selectors);
-    if (!targets.length) return;
+    if (typeof document === 'undefined') return;
+
+    const selectors = '.reveal, .reveal-left, .reveal-right, .reveal-zoom, [data-reveal]';
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -74,7 +87,30 @@ export function useGlobalScrollReveal(
       { threshold, rootMargin }
     );
 
-    targets.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const observeAll = () => {
+      const targets = document.querySelectorAll<HTMLElement>(selectors);
+      targets.forEach((el) => {
+        if (!el.classList.contains('revealed')) {
+          observer.observe(el);
+        }
+      });
+    };
+
+    observeAll();
+
+    // Listen to changes when state updates or products load
+    const mutationObserver = new MutationObserver(() => {
+      observeAll();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, [threshold, rootMargin]);
 }

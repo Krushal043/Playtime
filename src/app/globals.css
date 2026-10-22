@@ -572,51 +572,73 @@ body {
 /* ── 1. SCROLL REVEAL ENTRANCE SYSTEM ─────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(28px);
+  animation: reveal-fallback 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 .reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  animation: none !important;
 }
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-48px);
+  transform: translateX(-36px);
+  animation: reveal-fallback 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-left.revealed {
-  opacity: 1;
-  transform: translateX(0);
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  animation: none !important;
 }
 
 .reveal-right {
   opacity: 0;
-  transform: translateX(48px);
+  transform: translateX(36px);
+  animation: reveal-fallback 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition:
     opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-right.revealed {
-  opacity: 1;
-  transform: translateX(0);
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  animation: none !important;
 }
 
 .reveal-zoom {
   opacity: 0;
-  transform: scale(0.88);
+  transform: scale(0.92);
+  animation: reveal-zoom-fallback 0.5s 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition:
     opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
     transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-zoom.revealed {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  animation: none !important;
+}
+
+@keyframes reveal-fallback {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes reveal-zoom-fallback {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Stagger children reveal delays */

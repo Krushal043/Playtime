@@ -42,16 +42,22 @@ async function getLiveOrStaticProduct(id: string): Promise<Product | null> {
 export async function generateStaticParams() {
   try {
     await connectToDatabase();
-    const dbProds = await ProductModel.find({}, 'id');
+    const dbProds = await ProductModel.find({ id: { $exists: true, $type: 'string', $ne: '' } }, 'id').lean();
     if (dbProds && dbProds.length > 0) {
-      return dbProds.map((p) => ({ id: p.id }));
+      const valid = dbProds
+        .map((p: any) => ({ id: typeof p.id === 'string' ? p.id.trim() : '' }))
+        .filter((item) => Boolean(item.id));
+      if (valid.length > 0) {
+        return valid;
+      }
     }
-  } catch {
-    // fallback to static
+  } catch (err) {
+    console.warn('generateStaticParams db lookup error, falling back to static:', err);
   }
-  return ALL_PRODUCTS.map((p) => ({
-    id: p.id,
-  }));
+
+  return ALL_PRODUCTS
+    .map((p) => ({ id: typeof p.id === 'string' ? p.id.trim() : '' }))
+    .filter((item) => Boolean(item.id));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
