@@ -21,15 +21,15 @@ export default function TopMarqueeBar() {
       case 'EyeOff':
         return <EyeOff className="w-3.5 h-3.5 text-amber-400 shrink-0" />;
       case 'Lock':
-        return <Lock className="w-3.5 h-3.5 text-blue-400 shrink-0" />;
+        return <Lock className="w-3.5 h-3.5 text-[#007BA7] shrink-0" />;
       case 'Zap':
-        return <Zap className="w-3.5 h-3.5 text-rose-400 shrink-0" />;
+        return <Zap className="w-3.5 h-3.5 text-[#FF2D95] shrink-0" />;
       case 'ShieldCheck':
         return <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />;
       case 'Star':
         return <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300 shrink-0" />;
       case 'Tag':
-        return <Tag className="w-3.5 h-3.5 text-rose-400 shrink-0" />;
+        return <Tag className="w-3.5 h-3.5 text-[#FF2D95] shrink-0" />;
       case 'Leaf':
       default:
         return <Leaf className="w-3.5 h-3.5 text-emerald-400 shrink-0" />;
@@ -39,7 +39,7 @@ export default function TopMarqueeBar() {
   const displayList = [...marqueeItems, ...marqueeItems, ...marqueeItems];
 
   return (
-    <div className="w-full bg-[#03091e] border-b border-blue-950/80 text-slate-200 py-1.5 sm:py-2 overflow-hidden select-none relative z-50 text-[11px] sm:text-xs">
+    <div className="w-full bg-[#0A0A0A] border-b border-[#007BA7]/25 text-slate-200 py-1.5 sm:py-2 overflow-hidden select-none relative z-50 text-[11px] sm:text-xs">
       <div className="flex items-center">
         {/* Infinite Running Marquee Track */}
         <div className="flex gap-8 sm:gap-12 whitespace-nowrap animate-marquee items-center will-change-transform">
@@ -59,7 +59,7 @@ export default function TopMarqueeBar() {
                     <button
                       type="button"
                       onClick={(e) => copyCode(e, couponCode)}
-                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-rose-950/80 hover:bg-rose-900 border border-rose-500/60 text-white font-mono font-black text-[10px] sm:text-[11px] cursor-pointer transition-all active:scale-95 shadow-xs"
+                      className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FF2D95]/20 hover:bg-[#FF2D95]/30 border border-[#FF2D95]/60 text-white font-mono font-black text-[10px] sm:text-[11px] cursor-pointer transition-all active:scale-95 shadow-xs"
                       title="Click to copy coupon code"
                     >
                       {isCopied ? (
@@ -69,7 +69,7 @@ export default function TopMarqueeBar() {
                         </>
                       ) : (
                         <>
-                          <span className="text-amber-300 tracking-wider">{couponCode}</span>
+                          <span className="text-white tracking-wider">{couponCode}</span>
                           <Copy className="w-2.5 h-2.5 text-slate-300" />
                         </>
                       )}
@@ -79,7 +79,7 @@ export default function TopMarqueeBar() {
                 ) : (
                   <span className="text-slate-200">{item.text}</span>
                 )}
-                <span className="text-blue-500/50 ml-4 font-black text-[10px]">&bull;</span>
+                <span className="text-[#007BA7]/60 ml-4 font-black text-[10px]">&bull;</span>
               </div>
             );
           })}

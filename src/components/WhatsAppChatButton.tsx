@@ -202,7 +202,7 @@ export default function WhatsAppChatButton() {
             <Gift className="w-5 h-5 text-yellow-200 animate-bounce" />
             <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-300 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-400 border border-[#0a193d]" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-400 border border-[#0A0A0A]" />
             </span>
           </button>
 
@@ -262,14 +262,14 @@ export default function WhatsAppChatButton() {
         
         {/* Interactive AI Chat Window */}
         {isBotOpen && (
-          <div className="mb-3 w-[calc(100vw-32px)] sm:w-[380px] h-[520px] max-h-[75vh] rounded-3xl bg-[#030917]/95 border border-emerald-500/30 shadow-[0_20px_60px_rgba(0,0,0,0.85)] backdrop-blur-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 slide-in-from-bottom-4 duration-300 text-white z-50">
+          <div className="mb-3 w-[calc(100vw-32px)] sm:w-[380px] h-[520px] max-h-[75vh] rounded-3xl bg-[#0A0A0A]/95 border border-[#007BA7]/30 shadow-[0_20px_60px_rgba(0,0,0,0.85)] backdrop-blur-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 slide-in-from-bottom-4 duration-300 text-white z-50">
             
             {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-[#051336] via-[#092257] to-[#041d42] border-b border-white/10 flex items-center justify-between shrink-0">
+            <div className="p-4 bg-gradient-to-r from-[#0A0A0A] via-[#005f82] to-[#007BA7] border-b border-white/10 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="relative w-9 h-9 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-300 shadow-md">
                   <Bot className="w-5 h-5 text-emerald-400" />
-                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-[#051336]" />
+                  <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-[#0A0A0A]" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
@@ -353,19 +353,19 @@ export default function WhatsAppChatButton() {
                 e.preventDefault();
                 handleSendMessage();
               }}
-              className="p-3 bg-[#020612] border-t border-white/10 flex items-center gap-2 shrink-0"
+              className="p-3 bg-[#0A0A0A] border-t border-white/10 flex items-center gap-2 shrink-0"
             >
               <input
                 type="text"
                 placeholder="Ask about dosage, timing, discretion..."
                 value={inputVal}
                 onChange={(e) => setInputVal(e.target.value)}
-                className="flex-1 bg-white/10 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500 font-medium transition-colors"
+                className="flex-1 bg-white/10 border border-white/15 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-[#007BA7] font-medium transition-colors"
               />
               <button
                 type="submit"
                 disabled={!inputVal.trim()}
-                className="w-9 h-9 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-40 disabled:hover:bg-emerald-500 text-slate-950 flex items-center justify-center transition-all active:scale-95 cursor-pointer shrink-0"
+                className="w-9 h-9 rounded-xl bg-gradient-to-r from-[#007BA7] to-[#FF2D95] hover:opacity-90 disabled:opacity-40 text-white flex items-center justify-center transition-all active:scale-95 cursor-pointer shrink-0"
                 aria-label="Send message"
               >
                 <Send className="w-4 h-4" />
@@ -379,7 +379,7 @@ export default function WhatsAppChatButton() {
         <div className="relative group animate-float-slow">
           <button
             onClick={() => setIsBotOpen(!isBotOpen)}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#051336] via-[#092257] to-[#041d42] border-2 border-emerald-400/60 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/60 hover:scale-115 active:scale-90 transition-all duration-300 cursor-pointer relative"
+            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#0A0A0A] via-[#005f82] to-[#007BA7] border-2 border-[#007BA7]/60 text-white flex items-center justify-center shadow-lg shadow-[#007BA7]/30 hover:shadow-[#007BA7]/60 hover:scale-115 active:scale-90 transition-all duration-300 cursor-pointer relative"
             title={isBotOpen ? 'Close AI Advisor' : 'Open Ayurvedic AI Advisor'}
             aria-label={isBotOpen ? 'Close AI Advisor' : 'Open Ayurvedic AI Advisor'}
           >

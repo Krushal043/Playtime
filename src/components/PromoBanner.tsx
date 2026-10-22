@@ -47,7 +47,7 @@ export default function PromoBanner() {
   };
 
   return (
-    <div className="w-full bg-[#090d16] border-b border-slate-800 text-white text-xs py-2 px-3 sm:px-4 shadow-2xs select-none">
+    <div className="w-full bg-[#0A0A0A] border-b border-[#007BA7]/20 text-white text-xs py-2 px-3 sm:px-4 shadow-2xs select-none">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
         
         {/* Left: 100% Discreet notice */}
@@ -65,12 +65,12 @@ export default function PromoBanner() {
           className="flex items-center gap-1.5 shrink-0 cursor-pointer group"
           title="Click to claim offer"
         >
-          <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-red-600 text-white font-black uppercase text-[10px] tracking-wider border border-red-500/40 shadow-xs group-hover:scale-105 transition-transform">
+          <span className="hidden sm:inline-block px-2 py-0.5 rounded-full bg-[#FF2D95] text-white font-black uppercase text-[10px] tracking-wider border border-[#FF2D95]/40 shadow-xs group-hover:scale-105 transition-transform">
             FLASH OFFER
           </span>
           <button
             onClick={copyCode}
-            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-950/60 hover:bg-red-900 active:scale-95 text-white font-mono font-black text-[11px] sm:text-xs border border-red-500/50 transition-all cursor-pointer shadow-xs"
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FF2D95]/20 hover:bg-[#FF2D95]/30 active:scale-95 text-white font-mono font-black text-[11px] sm:text-xs border border-[#FF2D95]/60 transition-all cursor-pointer shadow-xs"
             title="Click to copy coupon code"
           >
             {copied ? (

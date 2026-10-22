@@ -138,15 +138,15 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
         <div>
           {/* Top pill badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/85 border border-slate-200/80 shadow-xs mb-3">
-            <Flame className="w-3.5 h-3.5 text-rose-500 fill-current animate-pulse" />
-            <span className="text-[11px] font-black uppercase tracking-wider text-[#0a193d]">
+            <Flame className="w-3.5 h-3.5 text-[#FF2D95] fill-current animate-pulse" />
+            <span className="text-[11px] font-black uppercase tracking-wider text-[#0A0A0A]">
               Real Creators &bull; Verified Reviews
             </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF2D95]" />
             <span className="text-[10px] font-bold text-slate-500">Trending On Instagram</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0a193d] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0A0A0A] tracking-tight">
             Loved by Doctors, Creators &amp; Couples
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
@@ -160,7 +160,7 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
           <button
             type="button"
             onClick={() => setIsAutoScrolling(!isAutoScrolling)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white border border-slate-200/90 text-[#0a193d] text-xs font-bold shadow-xs transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white border border-slate-200/90 text-[#0A0A0A] text-xs font-bold shadow-xs transition-all cursor-pointer"
             title={isAutoScrolling ? 'Pause Auto-Scroll' : 'Resume Auto-Scroll'}
           >
             {isAutoScrolling ? (
@@ -170,7 +170,7 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 text-rose-600 fill-current" />
+                <Play className="w-3.5 h-3.5 text-[#FF2D95] fill-current" />
                 <span className="hidden sm:inline text-[11px]">Auto-Scroll</span>
               </>
             )}
@@ -181,7 +181,7 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
             <button
               type="button"
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 text-[#0a193d] flex items-center justify-center shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 text-[#0A0A0A] flex items-center justify-center shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
               aria-label="Previous videos"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -189,7 +189,7 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
             <button
               type="button"
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 text-[#0a193d] flex items-center justify-center shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
+              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white border border-slate-200/90 text-[#0A0A0A] flex items-center justify-center shadow-sm hover:shadow-md transition-all cursor-pointer active:scale-95"
               aria-label="Next videos"
             >
               <ChevronRight className="w-5 h-5" />
@@ -278,14 +278,14 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
                       {isMuted ? (
                         <VolumeX className="w-3.5 h-3.5 text-slate-300" />
                       ) : (
-                        <Volume2 className="w-3.5 h-3.5 text-rose-400" />
+                        <Volume2 className="w-3.5 h-3.5 text-[#FF2D95]" />
                       )}
                     </button>
                   </div>
 
                   {/* Center Play Button Overlay (Reveals on Hover) */}
                   <div className="relative z-10 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:bg-rose-600 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:bg-[#FF2D95] transition-all duration-300">
                       <Play className="w-5 h-5 fill-current ml-0.5" />
                     </div>
                   </div>
@@ -296,11 +296,11 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
                     {/* View Metrics Badge */}
                     <div className="flex items-center justify-between text-[11px] text-white/90">
                       <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-950/70 backdrop-blur-md border border-white/20 font-bold">
-                        <Flame className="w-3 h-3 text-rose-400 fill-current" />
+                        <Flame className="w-3 h-3 text-[#FF2D95] fill-current" />
                         {video.views} views
                       </span>
                       <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-950/70 backdrop-blur-md border border-white/20 font-bold">
-                        <Heart className="w-3 h-3 text-rose-400 fill-current" />
+                        <Heart className="w-3 h-3 text-[#FF2D95] fill-current" />
                         {video.likes}
                       </span>
                     </div>
@@ -322,11 +322,11 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
                       </div>
                       
                       <div className="flex-1 min-w-0 text-left">
-                        <p className="text-xs font-black text-[#0a193d] truncate">
+                        <p className="text-xs font-black text-[#0A0A0A] truncate">
                           {video.productName}
                         </p>
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-xs font-black text-rose-600">
+                          <span className="text-xs font-black text-[#FF2D95]">
                             ₹{video.productPrice}
                           </span>
                           <span className="text-[10px] text-slate-400 line-through">
@@ -414,7 +414,7 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
                 <div className="pr-2">
                   <div className="flex items-center gap-1">
                     <span className="text-xs font-black">{selectedVideo.creatorName}</span>
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 fill-current" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#007BA7] fill-current" />
                   </div>
                   <span className="text-[10px] text-slate-300">{selectedVideo.creatorHandle}</span>
                 </div>
@@ -447,11 +447,11 @@ export default function InfluencerVideoSection({ onAddToCart }: InfluencerVideoS
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-xs font-black text-[#0a193d] truncate">
+                  <h4 className="text-xs font-black text-[#0A0A0A] truncate">
                     {selectedVideo.productName}
                   </h4>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-sm font-black text-rose-600">
+                    <span className="text-sm font-black text-[#FF2D95]">
                       ₹{selectedVideo.productPrice}
                     </span>
                     <span className="text-xs text-slate-400 line-through">

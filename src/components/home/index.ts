@@ -16,3 +16,4 @@ export { default as DateNightBanner } from './DateNightBanner';
 export { default as DuoBundleBanner } from './DuoBundleBanner';
 export { default as DualProductShowcase } from './DualProductShowcase';
 export { default as TrendingMarquee } from './TrendingMarquee';
+export { default as AeroBlogSection } from './AeroBlogSection';

@@ -97,20 +97,20 @@ function OrderSuccessContent() {
 
   if (accessDenied) {
     return (
-      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+      <div className="min-h-screen silver-shade-bg text-[#0A0A0A] flex flex-col selection:bg-[#007BA7]/25 selection:text-[#0A0A0A]">
         <Navbar />
         <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-6">
           <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-5">
-            <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center mx-auto border border-amber-200/80 shadow-md">
+            <div className="w-16 h-16 rounded-2xl bg-[#007BA7]/10 text-[#007BA7] flex items-center justify-center mx-auto border border-[#007BA7]/20 shadow-md">
               <Lock className="w-8 h-8" />
             </div>
-            <h2 className="text-xl font-black text-[#051336]">Protected Order Access</h2>
+            <h2 className="text-xl font-black text-[#0A0A0A]">Protected Order Access</h2>
             <p className="text-xs text-slate-600 leading-relaxed font-medium">
               This order contains confidential delivery details and is protected with end-to-end token validation. Please use the exact confirmation link sent to your device.
             </p>
             <Link
               href="/"
-              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] transition-all"
+              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] hover:opacity-95 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(0,123,167,0.35)] transition-all"
             >
               Return Home &rarr;
             </Link>
@@ -123,15 +123,15 @@ function OrderSuccessContent() {
 
   if (!order) {
     return (
-      <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+      <div className="min-h-screen silver-shade-bg text-[#0A0A0A] flex flex-col selection:bg-[#007BA7]/25 selection:text-[#0A0A0A]">
         <Navbar />
         <div className="flex-1 max-w-md mx-auto px-4 py-20 text-center space-y-6">
           <div className="glass-card-elevated rounded-3xl p-8 sm:p-10 border border-white/95 shadow-2xl space-y-5">
-            <h2 className="text-xl font-black text-[#051336]">Order Not Found</h2>
+            <h2 className="text-xl font-black text-[#0A0A0A]">Order Not Found</h2>
             <p className="text-xs text-slate-600 font-medium">We could not find the details for this order.</p>
             <Link
               href="/"
-              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-rose-600 via-red-600 to-rose-700 hover:from-rose-500 hover:to-red-500 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(225,29,72,0.45)] transition-all"
+              className="inline-block px-7 py-3.5 rounded-full bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] hover:opacity-95 text-white text-xs font-black uppercase tracking-wider shadow-[0_4px_16px_rgba(0,123,167,0.35)] transition-all"
             >
               Return Home &rarr;
             </Link>
@@ -143,7 +143,7 @@ function OrderSuccessContent() {
   }
 
   return (
-    <div className="min-h-screen silver-shade-bg text-slate-900 flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+    <div className="min-h-screen silver-shade-bg text-[#0A0A0A] flex flex-col selection:bg-[#007BA7]/25 selection:text-[#0A0A0A]">
       <Navbar />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-12 w-full space-y-8">
@@ -159,26 +159,26 @@ function OrderSuccessContent() {
               <EyeOff className="w-3.5 h-3.5" />
               100% Confidential Order Confirmed
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-[#0a193d]">
+            <h1 className="text-2xl sm:text-3xl font-black text-[#0A0A0A]">
               Thank You! Your Order is Secured.
             </h1>
             <p className="text-xs sm:text-sm text-slate-600 mt-1">
-              Order ID: <strong className="text-[#0a193d] font-mono">#{order.id}</strong> • Tracking Number: <span className="font-mono text-rose-600 font-bold">{order.trackingNumber}</span>
+              Order ID: <strong className="text-[#0A0A0A] font-mono">#{order.id}</strong> • Tracking Number: <span className="font-mono text-[#FF2D95] font-bold">{order.trackingNumber}</span>
             </p>
           </div>
 
           {/* Discreet Box Reminder */}
           <div className="max-w-xl mx-auto p-4 rounded-2xl bg-white/70 border border-slate-200/80 text-xs text-slate-700 flex items-center gap-3 text-left shadow-sm">
-            <Lock className="w-5 h-5 text-rose-500 shrink-0" />
+            <Lock className="w-5 h-5 text-[#007BA7] shrink-0" />
             <p className="leading-relaxed">
-              Your parcel will arrive inside an unmarked brown carton with sender name &ldquo;<strong className="text-[#0a193d]">PT Logistics</strong>&rdquo;. No product details appear anywhere on the exterior.
+              Your parcel will arrive inside an unmarked brown carton with sender name &ldquo;<strong className="text-[#0A0A0A]">PT Logistics</strong>&rdquo;. No product details appear anywhere on the exterior.
             </p>
           </div>
         </div>
 
         {/* Live Order Timeline Tracker */}
         <div className="glass-card rounded-3xl p-6 sm:p-8 border border-white/80 shadow-xl space-y-6">
-          <h2 className="text-base font-black text-[#0a193d]">Shipment Status &amp; Tracking</h2>
+          <h2 className="text-base font-black text-[#0A0A0A]">Shipment Status &amp; Tracking</h2>
           
           <div className="relative">
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-2">
@@ -189,18 +189,18 @@ function OrderSuccessContent() {
                   ✓
                 </div>
                 <div>
-                  <p className="text-xs font-black text-[#0a193d]">Order Confirmed</p>
+                  <p className="text-xs font-black text-[#0A0A0A]">Order Confirmed</p>
                   <p className="text-[11px] text-slate-500 font-medium">Payment &amp; address verified</p>
                 </div>
               </div>
 
               {/* Step 2: Discretely Packed */}
               <div className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-2 text-left">
-                <div className="w-8 h-8 rounded-full btn-red text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md animate-pulse">
+                <div className="w-8 h-8 rounded-full bg-[#FF2D95] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md animate-pulse">
                   2
                 </div>
                 <div>
-                  <p className="text-xs font-black text-rose-600">Discreetly Packed</p>
+                  <p className="text-xs font-black text-[#FF2D95]">Discreetly Packed</p>
                   <p className="text-[11px] text-slate-500 font-medium">Unmarked brown box</p>
                 </div>
               </div>
@@ -234,7 +234,7 @@ function OrderSuccessContent() {
         {/* Itemized Order Summary */}
         <div className="glass-card-elevated rounded-3xl p-6 sm:p-8 border border-white/90 shadow-2xl space-y-6">
           <div className="flex items-center justify-between pb-4 border-b border-slate-200/80">
-            <h2 className="text-base font-black text-[#0a193d]">Itemized Order Summary</h2>
+            <h2 className="text-base font-black text-[#0A0A0A]">Itemized Order Summary</h2>
             <span className="text-xs font-bold text-slate-500">
               {order.items.length} {order.items.length === 1 ? 'Product' : 'Products'}
             </span>
@@ -247,12 +247,12 @@ function OrderSuccessContent() {
                   <Image src={item.productImage} alt={item.productName} fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0 text-xs">
-                  <h3 className="font-black text-[#0a193d] text-sm">{item.productName}</h3>
-                  <p className="text-rose-600 font-bold mt-0.5">{item.packLabel}</p>
+                  <h3 className="font-black text-[#0A0A0A] text-sm">{item.productName}</h3>
+                  <p className="text-[#FF2D95] font-bold mt-0.5">{item.packLabel}</p>
                   <p className="text-slate-500 mt-0.5">Quantity: {item.quantity}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-black text-[#0a193d]">
+                  <p className="text-sm font-black text-[#0A0A0A]">
                     ₹{(item.price * item.quantity).toLocaleString('en-IN')}
                   </p>
                 </div>
@@ -264,7 +264,7 @@ function OrderSuccessContent() {
           <div className="pt-4 border-t border-slate-200/80 space-y-2 text-xs">
             <div className="flex justify-between text-slate-600">
               <span>Subtotal</span>
-              <span className="font-bold text-[#0a193d]">₹{order.subtotal.toLocaleString('en-IN')}</span>
+              <span className="font-bold text-[#0A0A0A]">₹{order.subtotal.toLocaleString('en-IN')}</span>
             </div>
             {order.discount > 0 && (
               <div className="flex justify-between text-emerald-600 font-black">
@@ -282,9 +282,9 @@ function OrderSuccessContent() {
                 )}
               </span>
             </div>
-            <div className="flex justify-between text-base font-black text-[#0a193d] pt-2 border-t border-slate-200/80">
+            <div className="flex justify-between text-base font-black text-[#0A0A0A] pt-2 border-t border-slate-200/80">
               <span>Total Paid</span>
-              <span className="text-rose-600">₹{order.totalAmount.toLocaleString('en-IN')}</span>
+              <span className="text-[#FF2D95]">₹{order.totalAmount.toLocaleString('en-IN')}</span>
             </div>
           </div>
         </div>
@@ -294,15 +294,15 @@ function OrderSuccessContent() {
           
           {/* Shipping Address */}
           <div className="glass-card rounded-3xl p-6 border border-white/80 shadow-xl text-xs space-y-3">
-            <h3 className="font-black text-[#0a193d] text-sm flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-rose-500" />
+            <h3 className="font-black text-[#0A0A0A] text-sm flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[#FF2D95]" />
               Delivery Destination
             </h3>
             <div>
-              <p className="font-black text-[#0a193d]">{order.shippingAddress.fullName}</p>
+              <p className="font-black text-[#0A0A0A]">{order.shippingAddress.fullName}</p>
               <p className="text-slate-600 leading-relaxed mt-1">
                 {order.shippingAddress.addressLine1}, {order.shippingAddress.addressLine2 && `${order.shippingAddress.addressLine2}, `}
-                {order.shippingAddress.city}, {order.shippingAddress.state} - <strong className="text-[#0a193d]">{order.shippingAddress.pincode}</strong>
+                {order.shippingAddress.city}, {order.shippingAddress.state} - <strong className="text-[#0A0A0A]">{order.shippingAddress.pincode}</strong>
               </p>
               <p className="text-slate-500 mt-1">Phone: +91 {order.shippingAddress.phone}</p>
             </div>
@@ -314,14 +314,14 @@ function OrderSuccessContent() {
 
           {/* Payment & Billing Details */}
           <div className="glass-card rounded-3xl p-6 border border-white/80 shadow-xl text-xs space-y-3">
-            <h3 className="font-black text-[#0a193d] text-sm flex items-center gap-2">
-              <CreditCard className="w-4 h-4 text-rose-500" />
+            <h3 className="font-black text-[#0A0A0A] text-sm flex items-center gap-2">
+              <CreditCard className="w-4 h-4 text-[#007BA7]" />
               Payment &amp; Billing
             </h3>
             <div className="space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-slate-500">Payment Mode:</span>
-                <span className="font-black text-[#0a193d]">{order.paymentMethod}</span>
+                <span className="font-black text-[#0A0A0A]">{order.paymentMethod}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Payment Status:</span>
@@ -345,7 +345,7 @@ function OrderSuccessContent() {
           <button
             type="button"
             onClick={handlePrint}
-            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/80 hover:bg-white border border-slate-300/80 text-[#0a193d] text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg transition-all"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white/80 hover:bg-white border border-slate-300/80 text-[#0A0A0A] text-xs font-black flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-lg transition-all"
           >
             <Download className="w-4 h-4 text-slate-500" />
             <span>Download Invoice (PDF)</span>
@@ -353,7 +353,7 @@ function OrderSuccessContent() {
 
           <Link
             href="/"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full btn-navy-red text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full btn-gradient text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all"
           >
             <span>Continue Shopping &rarr;</span>
           </Link>
@@ -371,7 +371,7 @@ export default function OrderSuccessClient() {
     <Suspense
       fallback={
         <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full border-2 border-red-600 border-t-transparent animate-spin" />
+          <div className="w-8 h-8 rounded-full border-2 border-[#007BA7] border-t-transparent animate-spin" />
         </div>
       }
     >

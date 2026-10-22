@@ -18,7 +18,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#051336",
+  themeColor: "#0A0A0A",
 };
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://playtime.in";

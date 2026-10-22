@@ -113,12 +113,12 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg glass-card-elevated rounded-3xl p-6 sm:p-8 border border-white/95 shadow-2xl overflow-hidden text-[#0a193d]">
+      <div className="relative w-full max-w-lg glass-card-elevated rounded-3xl p-6 sm:p-8 border border-white/95 shadow-2xl overflow-hidden text-[#0A0A0A]">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-[#0a193d] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-[#0A0A0A] transition-colors cursor-pointer"
           aria-label="Close Quiz"
         >
           <X className="w-4 h-4" />
@@ -130,15 +130,15 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
             {/* Header */}
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 text-rose-700 text-[10px] font-black uppercase tracking-wider border border-rose-200">
-                  <Sparkles className="w-3 h-3 text-rose-500" />
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF2D95]/10 text-[#FF2D95] text-[10px] font-black uppercase tracking-wider border border-[#FF2D95]/20">
+                  <Sparkles className="w-3 h-3 text-[#FF2D95]" />
                   30-Second Intimacy Matcher
                 </span>
                 <span className="text-xs font-bold text-slate-400">Step {step} of 3</span>
               </div>
               <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div
-                  className="h-full btn-navy-red transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-[#007BA7] to-[#FF2D95] transition-all duration-300"
                   style={{ width: `${(step / 3) * 100}%` }}
                 />
               </div>
@@ -147,7 +147,7 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
             {/* Question 1: Goal */}
             {step === 1 && (
               <div className="space-y-4">
-                <h3 className="text-xl font-black text-[#0a193d]">
+                <h3 className="text-xl font-black text-[#0A0A0A]">
                   What is your primary intimacy goal right now?
                 </h3>
                 <div className="space-y-2.5">
@@ -162,18 +162,18 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
                         key={opt.id}
                         type="button"
                         onClick={() => handleSelect('goal', opt.id)}
-                        className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-rose-400/80 cursor-pointer shadow-xs group flex items-center justify-between"
+                        className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-[#007BA7] cursor-pointer shadow-xs group flex items-center justify-between"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="p-2.5 rounded-xl bg-slate-100 group-hover:bg-rose-50 text-[#0a193d] group-hover:text-rose-600 transition-colors">
+                          <div className="p-2.5 rounded-xl bg-slate-100 group-hover:bg-[#007BA7]/10 text-[#0A0A0A] group-hover:text-[#007BA7] transition-colors">
                             <Icon className="w-5 h-5" />
                           </div>
                           <div>
-                            <p className="text-xs font-black text-[#0a193d]">{opt.title}</p>
+                            <p className="text-xs font-black text-[#0A0A0A]">{opt.title}</p>
                             <p className="text-[11px] text-slate-500">{opt.desc}</p>
                           </div>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-rose-600 group-hover:translate-x-1 transition-all" />
+                        <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#007BA7] group-hover:translate-x-1 transition-all" />
                       </button>
                     );
                   })}
@@ -184,7 +184,7 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
             {/* Question 2: For Whom */}
             {step === 2 && (
               <div className="space-y-4">
-                <h3 className="text-xl font-black text-[#0a193d]">
+                <h3 className="text-xl font-black text-[#0A0A0A]">
                   Who are you shopping for today?
                 </h3>
                 <div className="space-y-2.5">
@@ -197,13 +197,13 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
                       key={opt.id}
                       type="button"
                       onClick={() => handleSelect('forWhom', opt.id)}
-                      className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-rose-400/80 cursor-pointer shadow-xs group flex items-center justify-between"
+                      className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-[#007BA7] cursor-pointer shadow-xs group flex items-center justify-between"
                     >
                       <div>
-                        <p className="text-xs font-black text-[#0a193d]">{opt.title}</p>
+                        <p className="text-xs font-black text-[#0A0A0A]">{opt.title}</p>
                         <p className="text-[11px] text-slate-500">{opt.desc}</p>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-rose-600 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#007BA7] group-hover:translate-x-1 transition-all" />
                     </button>
                   ))}
                 </div>
@@ -213,7 +213,7 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
             {/* Question 3: Priority */}
             {step === 3 && (
               <div className="space-y-4">
-                <h3 className="text-xl font-black text-[#0a193d]">
+                <h3 className="text-xl font-black text-[#0A0A0A]">
                   What is most critical for your experience?
                 </h3>
                 <div className="space-y-2.5">
@@ -226,13 +226,13 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
                       key={opt.id}
                       type="button"
                       onClick={() => handleSelect('priority', opt.id)}
-                      className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-rose-400/80 cursor-pointer shadow-xs group flex items-center justify-between"
+                      className="w-full p-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200/90 text-left transition-all hover:scale-[1.01] hover:border-[#007BA7] cursor-pointer shadow-xs group flex items-center justify-between"
                     >
                       <div>
-                        <p className="text-xs font-black text-[#0a193d]">{opt.title}</p>
+                        <p className="text-xs font-black text-[#0A0A0A]">{opt.title}</p>
                         <p className="text-[11px] text-slate-500">{opt.desc}</p>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-rose-600 group-hover:translate-x-1 transition-all" />
+                      <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#007BA7] group-hover:translate-x-1 transition-all" />
                     </button>
                   ))}
                 </div>
@@ -249,7 +249,7 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 Match Found &bull; 98% Compatibility
               </span>
-              <h3 className="text-2xl font-black text-[#0a193d]">Your Tailored Intimacy Match</h3>
+              <h3 className="text-2xl font-black text-[#0A0A0A]">Your Tailored Intimacy Match</h3>
               <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto leading-relaxed">
                 {rec.reason}
               </p>
@@ -261,14 +261,14 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
                 <Image src={rec.image} alt={rec.title} fill className="object-cover" />
               </div>
               <div className="flex-1 min-w-0 text-left">
-                <span className="text-[10px] font-bold text-rose-600 uppercase tracking-wide">
+                <span className="text-[10px] font-bold text-[#FF2D95] uppercase tracking-wide">
                   {rec.subtitle}
                 </span>
-                <h4 className="text-sm font-black text-[#0a193d] truncate mt-0.5">
+                <h4 className="text-sm font-black text-[#0A0A0A] truncate mt-0.5">
                   {rec.title}
                 </h4>
                 <div className="flex items-baseline gap-2 mt-1">
-                  <span className="text-base font-black text-rose-600">₹{rec.price}</span>
+                  <span className="text-base font-black text-[#0A0A0A]">₹{rec.price}</span>
                   <span className="text-xs text-slate-400 line-through">₹{rec.originalPrice}</span>
                   <span className="text-[10px] font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                     {rec.discount}
@@ -278,10 +278,10 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
             </div>
 
             {/* Special Quiz Promo */}
-            <div className="p-3 rounded-2xl bg-rose-50/70 border border-rose-200 text-xs text-rose-900 flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-[#FF2D95]/10 border border-[#FF2D95]/30 text-xs text-[#0A0A0A] flex items-center justify-between">
               <span className="font-bold flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-rose-600 shrink-0" />
-                Bonus Quiz Discount Applied: <strong className="font-mono">{rec.coupon}</strong>
+                <Sparkles className="w-4 h-4 text-[#FF2D95] shrink-0" />
+                Bonus Quiz Discount Applied: <strong className="font-mono text-[#FF2D95]">{rec.coupon}</strong>
               </span>
               <span className="text-[10px] font-black uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
                 Active
@@ -293,7 +293,7 @@ export default function IntimacyQuizModal({ isOpen, onClose, onAddToCart }: Inti
               <button
                 type="button"
                 onClick={handleClaim}
-                className="w-full py-4 rounded-full btn-navy-red text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer transition-all"
+                className="w-full py-4 rounded-full btn-gradient text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer transition-all"
               >
                 {isAdded ? (
                   <>

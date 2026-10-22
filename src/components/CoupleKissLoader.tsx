@@ -31,9 +31,9 @@ export default function CoupleKissLoader({
     >
       {/* Ambient Couple Glow (Blue Man Glow + Red Woman Glow) */}
       <div className="relative flex items-center justify-center">
-        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-blue-500/25 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -right-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-rose-500/25 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 m-auto w-24 h-24 bg-purple-500/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -left-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-[#007BA7]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -right-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-[#FF2D95]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 m-auto w-24 h-24 bg-[#0A0A0A]/20 rounded-full blur-2xl pointer-events-none" />
 
         {/* ARTISTIC MAN & WOMAN KISSING SILHOUETTE (INSPIRED DIRECTLY BY PLAYTIME BRAND LOGO) */}
         <div
@@ -49,30 +49,30 @@ export default function CoupleKissLoader({
             viewBox="0 0 320 220"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full filter drop-shadow-[0_12px_28px_rgba(5,19,54,0.18)]"
+            className="w-full h-full filter drop-shadow-[0_12px_28px_rgba(0,123,167,0.18)]"
           >
             <defs>
-              {/* Man: Royal Blue to Electric Cyan Ribbon (Logo Man Color) */}
+              {/* Man: Jet Black to Cerulean Blue Ribbon */}
               <linearGradient id="manLogoGradient" x1="50" y1="30" x2="160" y2="190" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#172554" />
-                <stop offset="35%" stopColor="#1d4ed8" />
-                <stop offset="75%" stopColor="#2563eb" />
+                <stop offset="0%" stopColor="#0A0A0A" />
+                <stop offset="40%" stopColor="#00587a" />
+                <stop offset="85%" stopColor="#007BA7" />
                 <stop offset="100%" stopColor="#38bdf8" />
               </linearGradient>
 
-              {/* Woman: Deep Ruby to Passion Rose Ribbon (Logo Woman Color) */}
+              {/* Woman: Jet Black to Neon Rose Ribbon */}
               <linearGradient id="womanLogoGradient" x1="270" y1="40" x2="160" y2="190" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#881337" />
-                <stop offset="40%" stopColor="#e11d48" />
-                <stop offset="80%" stopColor="#f43f5e" />
-                <stop offset="100%" stopColor="#fb7185" />
+                <stop offset="0%" stopColor="#0A0A0A" />
+                <stop offset="40%" stopColor="#9b1150" />
+                <stop offset="85%" stopColor="#FF2D95" />
+                <stop offset="100%" stopColor="#ff70b5" />
               </linearGradient>
 
               {/* Center Kiss Union Heart */}
               <linearGradient id="kissHeartGlow" x1="145" y1="90" x2="175" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#3b82f6" />
-                <stop offset="45%" stopColor="#ec4899" />
-                <stop offset="100%" stopColor="#f43f5e" />
+                <stop offset="0%" stopColor="#007BA7" />
+                <stop offset="50%" stopColor="#c026d3" />
+                <stop offset="100%" stopColor="#FF2D95" />
               </linearGradient>
 
               {/* Ayurvedic Leaf Emerald Gradient */}
@@ -83,7 +83,7 @@ export default function CoupleKissLoader({
               </linearGradient>
 
               <filter id="kissHeartDropGlow" x="130" y="80" width="60" height="60" filterUnits="userSpaceOnUse">
-                <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#f43f5e" floodOpacity="0.8" />
+                <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#FF2D95" floodOpacity="0.8" />
               </filter>
             </defs>
 
@@ -212,12 +212,12 @@ export default function CoupleKissLoader({
           </div>
         )}
 
-        {/* Dynamic Micro-Progress Bar in Playtime Logo Colors (Green, Blue, Red) */}
+        {/* Dynamic Micro-Progress Bar in Playtime Colors (Jet Black, Cerulean Blue, Neon Rose) */}
         <div className="w-40 sm:w-48 h-1.5 rounded-full bg-slate-200/90 mx-auto overflow-hidden shadow-inner">
-          <div className="h-full w-full bg-gradient-to-r from-emerald-500 via-blue-600 to-rose-600 animate-[marquee_1.5s_linear_infinite]" />
+          <div className="h-full w-full bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] animate-[marquee_1.5s_linear_infinite]" />
         </div>
 
-        <p className="text-xs sm:text-sm font-black text-[#051336] tracking-tight">
+        <p className="text-xs sm:text-sm font-black text-[#0A0A0A] tracking-tight">
           {subtitle}
         </p>
 

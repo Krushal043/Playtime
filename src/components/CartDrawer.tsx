@@ -64,12 +64,12 @@ export default function CartDrawer(props: CartDrawerProps) {
 
       {/* Drawer Container */}
       <div className="absolute inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
-        <div className="w-screen max-w-md bg-white/95 backdrop-blur-2xl border-l border-slate-200/90 shadow-2xl flex flex-col justify-between text-[#0a193d]">
+        <div className="w-screen max-w-md bg-white/95 backdrop-blur-2xl border-l border-slate-200/90 shadow-2xl flex flex-col justify-between text-[#0A0A0A]">
           
           {/* Header */}
           <div className="p-4 sm:p-5 border-b border-slate-200/80 flex items-center justify-between bg-white/80 backdrop-blur-md">
             <div className="flex items-center gap-2">
-              <span className="font-black text-[#0a193d] text-lg">Your Bag</span>
+              <span className="font-black text-[#0A0A0A] text-lg">Your Bag</span>
               <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700 border border-slate-200/80">
                 {items.reduce((s, i) => s + i.quantity, 0)} {items.length === 1 ? 'item' : 'items'}
               </span>
@@ -77,7 +77,7 @@ export default function CartDrawer(props: CartDrawerProps) {
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full text-slate-400 hover:text-[#0a193d] hover:bg-slate-100 transition-colors cursor-pointer"
+              className="p-2 rounded-full text-slate-400 hover:text-[#0A0A0A] hover:bg-slate-100 transition-colors cursor-pointer"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -95,10 +95,10 @@ export default function CartDrawer(props: CartDrawerProps) {
             {items.length === 0 ? (
               <div className="py-16 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-slate-100 border border-slate-200 text-slate-400 flex items-center justify-center mx-auto">
-                  <ShieldCheck className="w-8 h-8 text-rose-600" />
+                  <ShieldCheck className="w-8 h-8 text-[#FF2D95]" />
                 </div>
                 <div>
-                  <h3 className="font-black text-[#0a193d] text-base">Your Bag is Empty</h3>
+                  <h3 className="font-black text-[#0A0A0A] text-base">Your Bag is Empty</h3>
                   <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
                     Explore our flagship wellness essentials crafted for prolonged endurance and acoustic pleasure.
                   </p>
@@ -115,7 +115,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                 {/* Dynamic Tiered Shipping & Gift Milestone Bar */}
                 <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-black text-[#0a193d]">
+                    <span className="font-black text-[#0A0A0A]">
                       {subtotal >= 1499 ? (
                         <span className="text-emerald-700 flex items-center gap-1">
                           🎉 Free Shipping + Free Luxury Silk Pouch Unlocked!
@@ -126,7 +126,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                         </span>
                       ) : (
                         <span>
-                          Add <strong className="text-rose-600">₹{(999 - subtotal).toLocaleString('en-IN')}</strong> for <strong>FREE Discreet Shipping</strong>
+                          Add <strong className="text-[#FF2D95]">₹{(999 - subtotal).toLocaleString('en-IN')}</strong> for <strong>FREE Discreet Shipping</strong>
                         </span>
                       )}
                     </span>
@@ -174,15 +174,15 @@ export default function CartDrawer(props: CartDrawerProps) {
                           <Link
                             href={`/products/${item.product.id}`}
                             onClick={onClose}
-                            className="font-black text-xs text-[#0a193d] hover:text-rose-600 line-clamp-1 block transition-colors"
+                            className="font-black text-xs text-[#0A0A0A] hover:text-[#FF2D95] line-clamp-1 block transition-colors"
                           >
                             {item.product.name}
                           </Link>
-                          <p className="text-[11px] font-bold text-rose-600 mt-0.5">
+                          <p className="text-[11px] font-bold text-[#FF2D95] mt-0.5">
                             {item.selectedPack.label}
                           </p>
                           <div className="flex items-center gap-1.5 mt-1">
-                            <span className="text-xs font-black text-[#0a193d]">
+                            <span className="text-xs font-black text-[#0A0A0A]">
                               ₹{(item.selectedPack.price * item.quantity).toLocaleString('en-IN')}
                             </span>
                             <span className="text-[10px] text-slate-400 line-through">
@@ -196,14 +196,14 @@ export default function CartDrawer(props: CartDrawerProps) {
                           <div className="flex items-center border border-slate-200 rounded-full bg-slate-100/90 text-xs">
                             <button
                               onClick={() => onUpdateQuantity(item.product.id, item.selectedPack.packSize, -1)}
-                              className="px-2.5 py-1 text-slate-500 hover:text-[#0a193d] font-bold cursor-pointer"
+                              className="px-2.5 py-1 text-slate-500 hover:text-[#0A0A0A] font-bold cursor-pointer"
                             >
                               -
                             </button>
-                            <span className="px-2 text-[#0a193d] font-black">{item.quantity}</span>
+                            <span className="px-2 text-[#0A0A0A] font-black">{item.quantity}</span>
                             <button
                               onClick={() => onUpdateQuantity(item.product.id, item.selectedPack.packSize, 1)}
-                              className="px-2.5 py-1 text-slate-500 hover:text-[#0a193d] font-bold cursor-pointer"
+                              className="px-2.5 py-1 text-slate-500 hover:text-[#0A0A0A] font-bold cursor-pointer"
                             >
                               +
                             </button>
@@ -211,7 +211,7 @@ export default function CartDrawer(props: CartDrawerProps) {
 
                           <button
                             onClick={() => onRemoveItem(item.product.id, item.selectedPack.packSize)}
-                            className="text-slate-400 hover:text-rose-600 transition-colors p-1 cursor-pointer"
+                            className="text-slate-400 hover:text-[#FF2D95] transition-colors p-1 cursor-pointer"
                             title="Remove item"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -225,7 +225,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                 {/* 1-Click Intimacy Add-On Recommendations */}
                 <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5">
                   <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-[#0a193d]">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-[#0A0A0A]">
                       Frequently Added With Your Order
                     </span>
                     <span className="text-[10px] text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full font-bold">
@@ -246,9 +246,9 @@ export default function CartDrawer(props: CartDrawerProps) {
                           />
                         </div>
                         <div className="min-w-0 text-left">
-                          <p className="text-xs font-black text-[#0a193d] truncate">Natural Aloe Glide (50ml)</p>
+                          <p className="text-xs font-black text-[#0A0A0A] truncate">Natural Aloe Glide (50ml)</p>
                           <div className="flex items-baseline gap-1.5">
-                            <span className="text-xs font-black text-rose-600">₹149</span>
+                            <span className="text-xs font-black text-[#FF2D95]">₹149</span>
                             <span className="text-[10px] text-slate-400 line-through">₹299</span>
                           </div>
                         </div>
@@ -296,9 +296,9 @@ export default function CartDrawer(props: CartDrawerProps) {
                           />
                         </div>
                         <div className="min-w-0 text-left">
-                          <p className="text-xs font-black text-[#0a193d] truncate">Blackout Travel Pouch</p>
+                          <p className="text-xs font-black text-[#0A0A0A] truncate">Blackout Travel Pouch</p>
                           <div className="flex items-baseline gap-1.5">
-                            <span className="text-xs font-black text-rose-600">₹99</span>
+                            <span className="text-xs font-black text-[#FF2D95]">₹99</span>
                             <span className="text-[10px] text-slate-400 line-through">₹249</span>
                           </div>
                         </div>
@@ -346,7 +346,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                         placeholder="Coupon code (Use PLAY10 or MATCH10)"
                         value={couponInput}
                         onChange={(e) => setCouponInput(e.target.value)}
-                        className="w-full pl-8 pr-3 py-2 text-xs rounded-full bg-slate-50 border border-slate-200/90 text-[#0a193d] uppercase placeholder-slate-400 focus:outline-none font-bold"
+                        className="w-full pl-8 pr-3 py-2 text-xs rounded-full bg-slate-50 border border-slate-200/90 text-[#0A0A0A] uppercase placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#007BA7] font-bold"
                       />
                     </div>
                     <button
@@ -357,7 +357,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                     </button>
                   </div>
                   {couponMsg && (
-                    <p className={`text-[11px] font-bold ${couponMsg.error ? 'text-rose-600' : 'text-emerald-700'}`}>
+                    <p className={`text-[11px] font-bold ${couponMsg.error ? 'text-[#FF2D95]' : 'text-emerald-700'}`}>
                       {couponMsg.text}
                     </p>
                   )}
@@ -380,7 +380,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                   </div>
                   <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-rose-600 transition-all duration-300"
+                      className="h-full bg-gradient-to-r from-[#007BA7] to-[#FF2D95] transition-all duration-300"
                       style={{ width: `${Math.min(100, (subtotal / 999) * 100)}%` }}
                     />
                   </div>
@@ -388,7 +388,7 @@ export default function CartDrawer(props: CartDrawerProps) {
 
                 {/* Discretion Box Note */}
                 <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-[11px] text-slate-600 flex items-start gap-2 shadow-2xs">
-                  <Lock className="w-4 h-4 text-rose-600 mt-0.5 shrink-0" />
+                  <Lock className="w-4 h-4 text-[#007BA7] mt-0.5 shrink-0" />
                   <span>
                     <strong>Discreet Billing Assured:</strong> Billed under &quot;PT Logistics&quot;. 100% confidential.
                   </span>
@@ -403,7 +403,7 @@ export default function CartDrawer(props: CartDrawerProps) {
               <div className="space-y-1.5 text-xs">
                 <div className="flex justify-between text-slate-500 font-medium">
                   <span>Subtotal</span>
-                  <span className="text-[#0a193d] font-bold">₹{subtotal.toLocaleString('en-IN')}</span>
+                  <span className="text-[#0A0A0A] font-bold">₹{subtotal.toLocaleString('en-IN')}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-700 font-black">
@@ -421,7 +421,7 @@ export default function CartDrawer(props: CartDrawerProps) {
                     )}
                   </span>
                 </div>
-                <div className="flex justify-between text-base font-black text-[#0a193d] pt-2 border-t border-slate-200/80">
+                <div className="flex justify-between text-base font-black text-[#0A0A0A] pt-2 border-t border-slate-200/80">
                   <span>Total Amount</span>
                   <span>₹{finalTotal.toLocaleString('en-IN')}</span>
                 </div>

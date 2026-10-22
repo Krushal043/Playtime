@@ -594,9 +594,9 @@ export default function AdminClient() {
   // 1. Loading check
   if (isAuthenticated === null) {
     return (
-      <div className="min-h-screen bg-[#051336] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center text-white">
         <div className="flex items-center gap-3 font-mono text-sm">
-          <RefreshCw className="w-5 h-5 animate-spin text-amber-400" />
+          <RefreshCw className="w-5 h-5 animate-spin text-[#007BA7]" />
           <span>Verifying Admin Session...</span>
         </div>
       </div>
@@ -606,20 +606,20 @@ export default function AdminClient() {
   // 2. Unauthenticated Login Screen
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-radial from-[#071844] via-[#051336] to-[#02091c] flex items-center justify-center p-4">
-        <div className="relative w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border border-blue-900/30 overflow-hidden">
+      <div className="min-h-screen bg-radial from-[#0A0A0A] via-[#005f82] to-[#0A0A0A] flex items-center justify-center p-4">
+        <div className="relative w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border border-[#007BA7]/30 overflow-hidden">
           
           {/* Top Logo */}
           <div className="text-center mb-6">
-            <div className="inline-block bg-[#051336] p-3 rounded-2xl shadow-md border border-blue-900 mb-3">
+            <div className="inline-block bg-[#0A0A0A] p-3 rounded-2xl shadow-md border border-[#007BA7]/40 mb-3">
               <Image src="/logo.png" alt="Playtime Admin" width={110} height={45} className="object-contain" priority />
             </div>
-            <h1 className="text-2xl font-black text-[#051336] tracking-tight">Playtime Command Center</h1>
+            <h1 className="text-2xl font-black text-[#0A0A0A] tracking-tight">Playtime Command Center</h1>
             <p className="text-xs text-slate-500 font-medium mt-1">Authorized Operations &amp; Database Desk</p>
           </div>
 
           {loginError && (
-            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold flex items-center gap-2">
+            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-[#FF2D95] text-xs font-bold flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{loginError}</span>
             </div>
@@ -633,7 +633,7 @@ export default function AdminClient() {
                 required
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-[#051336] font-bold focus:outline-none focus:border-[#051336]"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-[#0A0A0A] font-bold focus:outline-none focus:border-[#007BA7]"
               />
             </div>
 
@@ -644,14 +644,14 @@ export default function AdminClient() {
                 required
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-[#051336] font-mono focus:outline-none focus:border-[#051336]"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs text-[#0A0A0A] font-mono focus:outline-none focus:border-[#007BA7]"
               />
             </div>
 
             <button
               type="submit"
               disabled={isLoggingIn}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#071844] via-[#0e2a66] to-[#dc2626] text-white text-xs font-black tracking-widest uppercase shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] text-white text-xs font-black tracking-widest uppercase shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-50"
             >
               {isLoggingIn ? 'AUTHENTICATING...' : 'ENTER ADMIN PORTAL'}
             </button>
@@ -684,7 +684,7 @@ export default function AdminClient() {
                     setIsLoggingIn(false);
                   }
                 }}
-                className="w-full py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-[#051336] text-xs font-black flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98 shadow-xs"
+                className="w-full py-2.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-[#0A0A0A] text-xs font-black flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-98 shadow-xs"
               >
                 <Zap className="w-4 h-4 text-amber-600 fill-amber-500 shrink-0" />
                 <span>⚡ FAST ADMIN 1-CLICK LOGIN</span>
@@ -696,7 +696,7 @@ export default function AdminClient() {
             <span className="flex items-center gap-1 text-emerald-600 font-bold">
               <ShieldCheck className="w-3.5 h-3.5" /> 256-Bit SSL Encrypted
             </span>
-            <Link href="/" className="hover:text-[#051336] underline">
+            <Link href="/" className="hover:text-[#007BA7] underline">
               Return to Store &rarr;
             </Link>
           </div>
@@ -711,25 +711,25 @@ export default function AdminClient() {
       
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-5 right-5 z-60 bg-[#051336] text-white px-5 py-3 rounded-2xl shadow-2xl border border-amber-400/40 text-xs font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-3">
-          <Sparkles className="w-4 h-4 text-amber-400" />
+        <div className="fixed top-5 right-5 z-60 bg-[#0A0A0A] text-white px-5 py-3 rounded-2xl shadow-2xl border border-[#007BA7]/40 text-xs font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-3">
+          <Sparkles className="w-4 h-4 text-[#FF2D95]" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* LEFT SIDEBAR */}
-      <aside className="w-64 bg-[#051336] text-slate-200 flex flex-col justify-between shrink-0 shadow-2xl border-r border-blue-900/50">
+      <aside className="w-64 bg-[#0A0A0A] text-slate-200 flex flex-col justify-between shrink-0 shadow-2xl border-r border-white/10">
         <div>
           {/* Logo & Status Badge */}
-          <div className="p-5 border-b border-blue-900/40">
+          <div className="p-5 border-b border-white/10">
             <Link href="/" target="_blank" className="flex items-center gap-2">
               <div className="bg-white rounded-xl p-1.5 w-32 shadow-xs">
                 <Image src="/logo.png" alt="Playtime" width={110} height={40} className="object-contain" priority />
               </div>
             </Link>
             <div className="mt-3 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0d2358] text-amber-300 text-[10px] font-black uppercase tracking-wider border border-amber-400/30">
-                <Zap className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#007BA7]/20 text-[#007BA7] text-[10px] font-black uppercase tracking-wider border border-[#007BA7]/30">
+                <Zap className="w-2.5 h-2.5 fill-[#007BA7] text-[#007BA7]" />
                 <span>ADMIN v2.0</span>
               </span>
               <span className="flex items-center gap-1 text-[10px] text-emerald-400 font-mono">
@@ -744,7 +744,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('overview')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'overview' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'overview' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <LayoutDashboard className="w-4 h-4" />
@@ -754,7 +754,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('products')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'products' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'products' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <Package className="w-4 h-4" />
@@ -764,7 +764,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('orders')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'orders' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'orders' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <ShoppingBag className="w-4 h-4" />
@@ -774,7 +774,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('coupons')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'coupons' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'coupons' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <Tag className="w-4 h-4" />
@@ -784,7 +784,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('cms')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'cms' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'cms' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <Edit className="w-4 h-4" />
@@ -794,7 +794,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('videos')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'videos' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'videos' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <Video className="w-4 h-4" />
@@ -804,14 +804,14 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('media')}
               className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'media' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'media' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <div className="flex items-center gap-3">
-                <UploadCloud className="w-4 h-4 text-sky-400" />
+                <UploadCloud className="w-4 h-4 text-[#007BA7]" />
                 <span>Cloudinary Media</span>
               </div>
-              <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/30 font-mono">
+              <span className="text-[9px] px-1.5 py-0.5 rounded-md bg-[#007BA7]/20 text-[#007BA7] border border-[#007BA7]/30 font-mono">
                 CDN
               </span>
             </button>
@@ -819,7 +819,7 @@ export default function AdminClient() {
             <button
               onClick={() => setActiveTab('database')}
               className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                activeTab === 'database' ? 'bg-gradient-to-r from-blue-700 to-rose-600 text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
+                activeTab === 'database' ? 'bg-gradient-to-r from-[#007BA7] to-[#FF2D95] text-white shadow-md' : 'text-slate-300 hover:bg-white/5'
               }`}
             >
               <Database className="w-4 h-4" />
@@ -829,7 +829,7 @@ export default function AdminClient() {
         </div>
 
         {/* Bottom Actions */}
-        <div className="p-4 border-t border-blue-900/40 space-y-2">
+        <div className="p-4 border-t border-white/10 space-y-2">
           <Link
             href="/"
             target="_blank"
@@ -855,7 +855,7 @@ export default function AdminClient() {
         {/* Top Header */}
         <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-30 shadow-2xs">
           <div>
-            <h2 className="text-xl font-black text-[#051336] capitalize">{activeTab} Desk</h2>
+            <h2 className="text-xl font-black text-[#0A0A0A] capitalize">{activeTab} Desk</h2>
             <p className="text-xs text-slate-500 font-medium">MongoDB Dynamic E-Commerce Operations</p>
           </div>
 
@@ -866,15 +866,15 @@ export default function AdminClient() {
               className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-600 transition-all cursor-pointer shadow-2xs"
               title="Refresh Live Data"
             >
-              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-blue-600' : ''}`} />
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-[#007BA7]' : ''}`} />
             </button>
 
             <div className="flex items-center gap-2 pl-3 border-l border-slate-200">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#051336] to-rose-600 text-white font-black text-xs flex items-center justify-center shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#007BA7] to-[#FF2D95] text-white font-black text-xs flex items-center justify-center shadow-xs">
                 PA
               </div>
               <div className="hidden sm:block text-left text-xs">
-                <p className="font-bold text-[#051336] leading-none">Super Admin</p>
+                <p className="font-bold text-[#0A0A0A] leading-none">Super Admin</p>
                 <p className="text-[10px] text-slate-400">admin@playtime.in</p>
               </div>
             </div>

@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { Star, Heart, ShoppingBag, Check, ChevronLeft, ChevronRight, ArrowRight, Eye, Sparkles } from 'lucide-react';
 import { Product, ProductPack } from '@/types';
 import { ProductCardSkeleton } from '@/components/Skeleton';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useRipple } from '@/hooks/useParallax';
 
 interface AeroBestsellersRowProps {
   products: Product[];
@@ -23,6 +25,7 @@ export default function AeroBestsellersRow({
   const [favorites, setFavorites] = useState<Record<string, boolean>>({});
   const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useScrollReveal<HTMLElement>();
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -53,15 +56,15 @@ export default function AeroBestsellersRow({
   };
 
   return (
-    <section id="flagship-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
-      {/* Header (From Reference: Title on Left, View All & Arrows on Right) */}
-      <div className="flex items-center justify-between mb-6">
+    <section ref={sectionRef} id="flagship-section" className="max-w-7xl mx-auto px-4 sm:px-6 py-8 w-full">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6 reveal">
         <div>
           <div className="flex items-center gap-2">
-            <h2 className="text-xl sm:text-2xl font-black text-[#051336] uppercase tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-[#0A0A0A] uppercase tracking-tight">
               BESTSELLER FORMULATIONS
             </h2>
-            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black bg-blue-100 text-blue-900">
+            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-black bg-[#007BA7]/15 text-[#007BA7]">
               {products.length} Items
             </span>
           </div>
@@ -73,7 +76,7 @@ export default function AeroBestsellersRow({
         <div className="flex items-center gap-3">
           <Link
             href="/#flagship-section"
-            className="text-xs font-black text-[#051336] hover:text-rose-600 transition-colors flex items-center gap-1 cursor-pointer"
+            className="text-xs font-black text-[#0A0A0A] hover:text-[#FF2D95] transition-colors flex items-center gap-1 cursor-pointer icon-spin-hover"
           >
             <span>View All</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -84,7 +87,7 @@ export default function AeroBestsellersRow({
             <button
               type="button"
               onClick={() => scroll('left')}
-              className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer transition-colors shadow-2xs active:scale-95"
+              className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer transition-all shadow-2xs active:scale-95 magnetic-btn"
               aria-label="Previous products"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -92,7 +95,7 @@ export default function AeroBestsellersRow({
             <button
               type="button"
               onClick={() => scroll('right')}
-              className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer transition-colors shadow-2xs active:scale-95"
+              className="w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 flex items-center justify-center cursor-pointer transition-all shadow-2xs active:scale-95 magnetic-btn"
               aria-label="Next products"
             >
               <ChevronRight className="w-4 h-4" />
@@ -101,7 +104,7 @@ export default function AeroBestsellersRow({
         </div>
       </div>
 
-      {/* Scrollable Carousel / Grid of Clean Product Cards */}
+      {/* Scrollable Carousel / Grid */}
       <div
         ref={scrollContainerRef}
         className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 scrollbar-none snap-x"
@@ -114,7 +117,7 @@ export default function AeroBestsellersRow({
             <ProductCardSkeleton />
           </>
         ) : (
-          products.map((product) => {
+          products.map((product, idx) => {
           const fallbackPack = {
             packSize: 1,
             label: 'Single Pack',
@@ -129,14 +132,17 @@ export default function AeroBestsellersRow({
           return (
             <div
               key={product.id}
-              className="group relative rounded-3xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink"
+              className={`reveal stagger-${Math.min(idx + 1, 4)} product-card-3d group relative rounded-3xl bg-white border border-slate-200/90 p-4 sm:p-5 shadow-xs flex flex-col justify-between min-w-[260px] sm:min-w-0 snap-start shrink-0 sm:shrink perspective-container`}
             >
-              <div>
+              {/* 3D depth shine overlay */}
+              <div className="card-3d-shine" />
+
+              <div className="relative z-10">
                 {/* Card Top: Badges & Favorite Heart Button */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-1.5">
                     {product.badge ? (
-                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#051336] text-white shadow-xs">
+                      <span className="shimmer-badge px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[#0A0A0A] text-white shadow-xs">
                         {product.badge.split('•')[0]}
                       </span>
                     ) : (
@@ -154,29 +160,29 @@ export default function AeroBestsellersRow({
                   <button
                     type="button"
                     onClick={() => toggleFav(product.id)}
-                    className="w-7 h-7 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center cursor-pointer transition-colors"
+                    className="w-7 h-7 rounded-full bg-slate-50 hover:bg-slate-100 flex items-center justify-center cursor-pointer transition-all hover:scale-125 active:scale-90"
                     aria-label="Wishlist"
                   >
                     <Heart
-                      className={`w-3.5 h-3.5 transition-colors ${
-                        isFav ? 'fill-rose-500 text-rose-500' : 'text-slate-400'
+                      className={`w-3.5 h-3.5 transition-all duration-300 ${
+                        isFav ? 'fill-[#FF2D95] text-[#FF2D95] scale-110' : 'text-slate-400'
                       }`}
                     />
                   </button>
                 </div>
 
-                {/* Contained Clean Product Image Stage (Like Reference) */}
-                <div className="relative w-full h-44 sm:h-48 my-2 flex items-center justify-center bg-gradient-to-b from-slate-50/50 via-white to-slate-100/50 rounded-2xl overflow-hidden group/img">
+                {/* 3D Product Image Stage */}
+                <div className="relative w-full h-44 sm:h-48 my-2 flex items-center justify-center bg-gradient-to-b from-slate-50/50 via-white to-slate-100/50 rounded-2xl overflow-hidden group/img img-zoom-container">
                   <Link
                     href={`/products/${product.id}`}
-                    className="relative w-full h-full p-4 flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-108"
+                    className="relative w-full h-full p-4 flex items-center justify-center"
                   >
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, 300px"
-                      className="object-contain drop-shadow-md"
+                      className="object-contain drop-shadow-md transition-transform duration-700"
                     />
                   </Link>
 
@@ -185,10 +191,10 @@ export default function AeroBestsellersRow({
                     <button
                       type="button"
                       onClick={() => onQuickView(product)}
-                      className="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-full bg-white/95 text-slate-800 border border-slate-200 shadow-md flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity cursor-pointer hover:bg-slate-100"
+                      className="absolute bottom-2.5 right-2.5 w-8 h-8 rounded-full bg-white/95 text-slate-800 border border-slate-200 shadow-md flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all cursor-pointer hover:bg-slate-100 hover:scale-110 active:scale-90"
                       title="Quick View"
                     >
-                      <Eye className="w-3.5 h-3.5 text-[#051336]" />
+                      <Eye className="w-3.5 h-3.5 text-[#0A0A0A]" />
                     </button>
                   )}
                 </div>
@@ -196,7 +202,7 @@ export default function AeroBestsellersRow({
                 {/* Title & Active Herb */}
                 <div className="mt-3">
                   <Link href={`/products/${product.id}`} className="block group/title">
-                    <h3 className="text-sm font-black text-[#051336] group-hover/title:text-rose-600 transition-colors line-clamp-1 tracking-tight">
+                    <h3 className="text-sm font-black text-[#0A0A0A] group-hover/title:text-[#FF2D95] transition-colors line-clamp-1 tracking-tight">
                       {product.name}
                     </h3>
                   </Link>
@@ -207,10 +213,10 @@ export default function AeroBestsellersRow({
               </div>
 
               {/* Bottom: Price, Rating & Action */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-2 relative z-10">
                 <div>
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-base font-black text-[#051336]">
+                    <span className="text-base font-black text-[#0A0A0A]">
                       ₹{pack.price.toLocaleString('en-IN')}
                     </span>
                     {pack.originalPrice > pack.price && (
@@ -225,14 +231,14 @@ export default function AeroBestsellersRow({
                   </div>
                 </div>
 
-                {/* Add to Bag Pill (Playtime Brand Colors) */}
+                {/* Add to Bag with ripple */}
                 <button
                   type="button"
                   onClick={() => handleAdd(product)}
-                  className={`py-2 px-3.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-1.5 cursor-pointer transition-all duration-300 active:scale-95 ${
+                  className={`ripple-container py-2 px-3.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-1.5 cursor-pointer transition-all duration-300 active:scale-95 magnetic-btn btn-press-pulse ${
                     isAdded
                       ? 'bg-emerald-600 text-white'
-                      : 'bg-gradient-to-r from-[#051336] via-[#091b48] to-[#1e3a8a] hover:from-[#091d4a] hover:to-[#dc2626] text-white shadow-sm hover:shadow-md'
+                      : 'bg-gradient-to-r from-[#0A0A0A] via-[#005f82] to-[#007BA7] hover:from-[#0A0A0A] hover:to-[#FF2D95] text-white shadow-sm hover:shadow-md'
                   }`}
                 >
                   {isAdded ? (

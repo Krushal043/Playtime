@@ -191,12 +191,12 @@ export default function AuthModal() {
       {/* ========================================================================= */}
       {/* 1. DESKTOP VIEW (Two-Column Side-by-Side: Playtime Theme) */}
       {/* ========================================================================= */}
-      <div className="hidden md:flex relative w-full max-w-[920px] bg-[#051336] rounded-[32px] shadow-2xl overflow-hidden z-10 border border-blue-900/40 animate-in fade-in zoom-in-95 duration-200 my-auto min-h-[580px]">
+      <div className="hidden md:flex relative w-full max-w-[920px] bg-[#0A0A0A] rounded-[32px] shadow-2xl overflow-hidden z-10 border border-[#007BA7]/40 animate-in fade-in zoom-in-95 duration-200 my-auto min-h-[580px]">
         
-        {/* LEFT COLUMN: Deep Luxury Midnight Navy Gradient */}
-        <div className="w-1/2 bg-gradient-to-br from-[#051336] via-[#071844] to-[#0b2158] p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden border-r border-blue-900/40">
-          <div className="absolute -top-24 -left-24 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
+        {/* LEFT COLUMN: Deep Luxury Midnight Jet Black & Cerulean Gradient */}
+        <div className="w-1/2 bg-gradient-to-br from-[#0A0A0A] via-[#005f82] to-[#007BA7] p-8 lg:p-10 flex flex-col justify-between relative overflow-hidden border-r border-[#007BA7]/30">
+          <div className="absolute -top-24 -left-24 w-80 h-80 bg-[#FF2D95]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-[#007BA7]/15 rounded-full blur-3xl pointer-events-none" />
 
           <div>
             {/* Top Row: Brand Logo Box + QUICKPASS Badge */}
@@ -212,7 +212,7 @@ export default function AuthModal() {
                 />
               </div>
 
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0d2358] text-amber-300 border border-amber-400/40 text-xs font-black tracking-wider uppercase shadow-xs">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0A0A0A]/70 text-amber-300 border border-amber-400/40 text-xs font-black tracking-wider uppercase shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                 <span>QUICKPASS</span>
                 <Zap className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -229,7 +229,7 @@ export default function AuthModal() {
               {PLAYTIME_PERKS.map((perk, index) => (
                 <div
                   key={index}
-                  className="bg-[#0a1e4e]/85 border border-blue-500/25 rounded-2xl p-3.5 flex flex-col justify-start text-left shadow-sm min-h-[145px] transition-all hover:bg-[#0e2764]/95 hover:border-blue-400/40"
+                  className="bg-[#0A0A0A]/75 border border-[#007BA7]/30 rounded-2xl p-3.5 flex flex-col justify-start text-left shadow-sm min-h-[145px] transition-all hover:bg-[#0A0A0A]/95 hover:border-[#007BA7]/60"
                 >
                   <div className="text-amber-400 text-lg leading-none mb-2">★</div>
                   <h3 className="text-xs font-black text-white leading-tight mb-1.5">
@@ -244,7 +244,7 @@ export default function AuthModal() {
           </div>
 
           {/* Bottom Guarantee Strip */}
-          <div className="border-t border-blue-800/40 pt-4 mt-6 flex items-center justify-between text-[11px] text-slate-300 font-medium">
+          <div className="border-t border-[#007BA7]/30 pt-4 mt-6 flex items-center justify-between text-[11px] text-slate-300 font-medium">
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>100% Encrypted &amp; Safe</span>
@@ -301,8 +301,8 @@ export default function AuthModal() {
                   onClick={() => setActiveTab('signup')}
                   className={`flex-1 py-2.5 rounded-lg text-xs font-black tracking-wider uppercase transition-all cursor-pointer ${
                     activeTab === 'signup'
-                      ? 'bg-[#051336] text-white shadow-xs'
-                      : 'text-slate-600 hover:text-[#051336]'
+                      ? 'bg-[#0A0A0A] text-white shadow-xs'
+                      : 'text-slate-600 hover:text-[#007BA7]'
                   }`}
                 >
                   SIGN UP
@@ -314,7 +314,7 @@ export default function AuthModal() {
                 type="button"
                 onClick={handleGoogleSignIn}
                 disabled={isSubmitting}
-                className="w-full mt-4 py-3 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center gap-3 text-xs sm:text-sm font-bold text-[#051336] shadow-2xs transition-all cursor-pointer hover:shadow-xs disabled:opacity-50"
+                className="w-full mt-4 py-3 px-4 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center gap-3 text-xs sm:text-sm font-bold text-[#0A0A0A] shadow-2xs transition-all cursor-pointer hover:shadow-xs disabled:opacity-50"
               >
                 <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
                   <path
@@ -358,7 +358,7 @@ export default function AuthModal() {
                       placeholder="e.g. Rahul Sharma"
                       value={userName}
                       onChange={(e) => setUserName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-[#051336] placeholder:text-slate-400 focus:outline-none focus:border-[#051336] focus:ring-2 focus:ring-[#051336]/15 font-medium"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-sm text-[#0A0A0A] placeholder:text-slate-400 focus:outline-none focus:border-[#007BA7] focus:ring-2 focus:ring-[#007BA7]/20 font-medium"
                     />
                   </div>
                 )}
@@ -373,7 +373,7 @@ export default function AuthModal() {
                     placeholder="Enter email or 10-digit mobile number"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-[#051336] placeholder:text-slate-400 focus:outline-none focus:border-[#051336] focus:ring-2 focus:ring-[#051336]/15 transition-all font-semibold"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 bg-white text-sm text-[#0A0A0A] placeholder:text-slate-400 focus:outline-none focus:border-[#007BA7] focus:ring-2 focus:ring-[#007BA7]/20 transition-all font-semibold"
                   />
                 </div>
 
@@ -383,16 +383,16 @@ export default function AuthModal() {
                     type="checkbox"
                     checked={notifyConsent}
                     onChange={(e) => setNotifyConsent(e.target.checked)}
-                    className="w-4 h-4 rounded text-rose-600 accent-rose-600 cursor-pointer"
+                    className="w-4 h-4 rounded text-[#FF2D95] accent-[#FF2D95] cursor-pointer"
                   />
                   <span>Notify me for secret updates, VIP drops &amp; offers</span>
                 </label>
 
-                {/* Submit Button (Signature Playtime Navy-Red Gradient) */}
+                {/* Submit Button (Signature Jet Black + Cerulean + Neon Rose Gradient) */}
                 <button
                   type="submit"
                   disabled={isSubmitting || !inputValue.trim()}
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#071844] via-[#0e2a66] to-[#dc2626] hover:from-[#0a1f58] hover:to-[#ef4444] text-white text-sm font-black tracking-widest uppercase shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-50 mt-2"
+                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] hover:from-[#171717] hover:to-[#ff4da6] text-white text-sm font-black tracking-widest uppercase shadow-md hover:shadow-lg transition-all cursor-pointer disabled:opacity-50 mt-2"
                 >
                   {isSubmitting ? 'PROCESSING...' : 'SUBMIT'}
                 </button>
@@ -404,18 +404,18 @@ export default function AuthModal() {
               <button
                 type="button"
                 onClick={() => setStep('input')}
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#051336] hover:text-rose-600 mb-4 cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A0A0A] hover:text-[#FF2D95] mb-4 cursor-pointer"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back to login</span>
               </button>
 
-              <h3 className="text-2xl font-bold text-[#051336] font-serif leading-tight">
+              <h3 className="text-2xl font-bold text-[#0A0A0A] font-serif leading-tight">
                 Enter Verification Code
               </h3>
               <p className="text-xs text-slate-500 mt-1.5">
                 We sent a 4-digit verification code to{' '}
-                <span className="font-bold text-[#051336]">{inputValue}</span>
+                <span className="font-bold text-[#0A0A0A]">{inputValue}</span>
               </p>
 
               <form onSubmit={handleVerifyOtp} className="mt-6 space-y-5">
@@ -498,9 +498,9 @@ export default function AuthModal() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. MOBILE VIEW (Playtime Signature Deep Navy & Pearl White Theme) */}
+      {/* 2. MOBILE VIEW (Playtime Signature Jet Black & Pearl White Theme) */}
       {/* ========================================================================= */}
-      <div className="md:hidden relative w-full max-w-[360px] mx-auto bg-[#051336] rounded-[26px] p-2.5 pb-3 shadow-2xl overflow-hidden z-10 border border-blue-900/40 animate-in fade-in zoom-in-95 duration-200 my-auto">
+      <div className="md:hidden relative w-full max-w-[360px] mx-auto bg-[#0A0A0A] rounded-[26px] p-2.5 pb-3 shadow-2xl overflow-hidden z-10 border border-[#007BA7]/40 animate-in fade-in zoom-in-95 duration-200 my-auto">
         
         {/* TOP ROW: Brand Logo + QUICKPASS Badge + Circular Close Button */}
         <div className="flex items-center justify-between gap-2 px-1 pt-0.5">
@@ -517,7 +517,7 @@ export default function AuthModal() {
           </div>
 
           {/* QUICKPASS Badge */}
-          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0d2358] text-amber-300 border border-amber-400/40 text-[10px] font-black tracking-wider uppercase shadow-xs">
+          <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#0A0A0A]/70 text-amber-300 border border-amber-400/40 text-[10px] font-black tracking-wider uppercase shadow-xs">
             <Sparkles className="w-2.5 h-2.5 text-amber-400" />
             <span>QUICKPASS</span>
             <Zap className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />
@@ -534,7 +534,7 @@ export default function AuthModal() {
         </div>
 
         {/* PERKS TICKER PILL (Gold star + Text + Indicator Dots on Right) */}
-        <div className="mt-2 mb-2 bg-[#0a1f50] text-slate-100 px-3 py-1.5 rounded-full border border-blue-500/20 flex items-center justify-between text-[10.5px] font-medium shadow-xs">
+        <div className="mt-2 mb-2 bg-[#007BA7]/20 text-slate-100 px-3 py-1.5 rounded-full border border-[#007BA7]/30 flex items-center justify-between text-[10.5px] font-medium shadow-xs">
           <div className="flex items-center gap-1.5 truncate pr-1">
             <span className="text-amber-400 text-xs leading-none">★</span>
             <span className="truncate font-bold text-white tracking-tight">
@@ -560,14 +560,14 @@ export default function AuthModal() {
           </div>
         </div>
 
-        {/* INNER PEARL WHITE CARD (Curved with rounded-[20px] nestled inside the navy frame) */}
+        {/* INNER PEARL WHITE CARD (Curved with rounded-[20px] nestled inside the dark frame) */}
         <div className="bg-white rounded-[20px] p-3.5 sm:p-4 shadow-sm space-y-2.5 border border-slate-100">
           
           {step === 'input' ? (
             <>
               {/* 1. Heading & Subtitle */}
               <div>
-                <h3 className="text-lg font-black text-[#051336] font-serif leading-tight">
+                <h3 className="text-lg font-black text-[#0A0A0A] font-serif leading-tight">
                   Sign In to Account
                 </h3>
                 <p className="text-[11px] text-slate-500 font-medium">
@@ -580,7 +580,7 @@ export default function AuthModal() {
                 type="button"
                 onClick={handleGoogleSignIn}
                 disabled={isSubmitting}
-                className="w-full py-2 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center gap-2 text-xs font-bold text-[#051336] shadow-2xs cursor-pointer transition-all disabled:opacity-50"
+                className="w-full py-2 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center gap-2 text-xs font-bold text-[#0A0A0A] shadow-2xs cursor-pointer transition-all disabled:opacity-50"
               >
                 <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
                   <path
@@ -619,7 +619,7 @@ export default function AuthModal() {
                   onClick={() => setActiveTab('login')}
                   className={`flex-1 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
                     activeTab === 'login'
-                      ? 'bg-[#051336] text-white shadow-xs'
+                      ? 'bg-[#0A0A0A] text-white shadow-xs'
                       : 'text-slate-600'
                   }`}
                 >
@@ -630,7 +630,7 @@ export default function AuthModal() {
                   onClick={() => setActiveTab('signup')}
                   className={`flex-1 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
                     activeTab === 'signup'
-                      ? 'bg-[#051336] text-white shadow-xs'
+                      ? 'bg-[#0A0A0A] text-white shadow-xs'
                       : 'text-slate-600'
                   }`}
                 >
@@ -646,7 +646,7 @@ export default function AuthModal() {
                     placeholder="Your Full Name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-xs text-[#051336] placeholder:text-slate-400 focus:outline-none focus:border-[#051336]"
+                    className="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-xs text-[#0A0A0A] placeholder:text-slate-400 focus:outline-none focus:border-[#007BA7]"
                   />
                 )}
 
@@ -659,7 +659,7 @@ export default function AuthModal() {
                   placeholder="Enter mobile number or email"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs text-[#051336] placeholder:text-slate-400 focus:outline-none focus:border-[#051336] shadow-2xs font-medium"
+                  className="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs text-[#0A0A0A] placeholder:text-slate-400 focus:outline-none focus:border-[#007BA7] shadow-2xs font-medium"
                 />
 
                 {/* 6. Consent Checkbox */}
@@ -668,7 +668,7 @@ export default function AuthModal() {
                     type="checkbox"
                     checked={notifyConsent}
                     onChange={(e) => setNotifyConsent(e.target.checked)}
-                    className="w-3.5 h-3.5 rounded text-rose-600 accent-rose-600 cursor-pointer"
+                    className="w-3.5 h-3.5 rounded text-[#FF2D95] accent-[#FF2D95] cursor-pointer"
                   />
                   <span>Notify me for order updates &amp; exclusive offers</span>
                 </label>
@@ -677,7 +677,7 @@ export default function AuthModal() {
                 <button
                   type="submit"
                   disabled={isSubmitting || !inputValue.trim()}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#071844] via-[#0e2a66] to-[#dc2626] hover:from-[#0a1f58] hover:to-[#ef4444] text-white text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer disabled:opacity-50"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] hover:from-[#171717] hover:to-[#ff4da6] text-white text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? 'PROCESSING...' : 'GET OTP CODE'}
                 </button>
@@ -689,18 +689,18 @@ export default function AuthModal() {
               <button
                 type="button"
                 onClick={() => setStep('input')}
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-[#051336] hover:text-rose-600 cursor-pointer"
+                className="inline-flex items-center gap-1 text-[11px] font-bold text-[#0A0A0A] hover:text-[#FF2D95] cursor-pointer"
               >
                 <ArrowLeft className="w-3 h-3" />
                 <span>Back to login</span>
               </button>
 
               <div>
-                <h3 className="text-lg font-bold text-[#051336] font-serif leading-tight">
+                <h3 className="text-lg font-bold text-[#0A0A0A] font-serif leading-tight">
                   Enter Verification Code
                 </h3>
                 <p className="text-[11px] text-slate-500 mt-0.5">
-                  Sent to <span className="font-bold text-[#051336]">{inputValue}</span>
+                  Sent to <span className="font-bold text-[#0A0A0A]">{inputValue}</span>
                 </p>
               </div>
 
@@ -719,7 +719,7 @@ export default function AuthModal() {
                       onChange={(e) => handleOtpChange(idx, e.target.value)}
                       onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                       onPaste={handleOtpPaste}
-                      className="w-11 h-12 text-center text-lg font-black rounded-xl border border-slate-300 bg-white text-[#051336] focus:outline-none focus:border-[#051336] shadow-2xs"
+                      className="w-11 h-12 text-center text-lg font-black rounded-xl border border-slate-300 bg-white text-[#0A0A0A] focus:outline-none focus:border-[#007BA7] shadow-2xs"
                       aria-label={`Digit ${idx + 1} of verification code`}
                     />
                   ))}
@@ -738,7 +738,7 @@ export default function AuthModal() {
                         setResendCountdown(30);
                         setOtp(['5', '8', '2', '0']);
                       }}
-                      className="font-bold text-rose-600 hover:underline cursor-pointer"
+                      className="font-bold text-[#FF2D95] hover:underline cursor-pointer"
                     >
                       Resend OTP
                     </button>
@@ -748,7 +748,7 @@ export default function AuthModal() {
                 <button
                   type="submit"
                   disabled={isSubmitting || otp.some((d) => !d)}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#071844] via-[#0e2a66] to-[#dc2626] text-white text-xs font-black tracking-widest uppercase shadow-md cursor-pointer disabled:opacity-50"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#0A0A0A] via-[#007BA7] to-[#FF2D95] text-white text-xs font-black tracking-widest uppercase shadow-md cursor-pointer disabled:opacity-50"
                 >
                   {isSubmitting ? 'VERIFYING...' : 'VERIFY &amp; ENTER'}
                 </button>
@@ -760,11 +760,11 @@ export default function AuthModal() {
           <div className="pt-0.5 flex items-center justify-between text-[9px] text-slate-400">
             <span>
               By continuing, you agree to Playtime&apos;s{' '}
-              <a href="#terms" className="underline hover:text-[#051336]">
+              <a href="#terms" className="underline hover:text-[#0A0A0A]">
                 Privacy Policy
               </a>{' '}
               &amp;{' '}
-              <a href="#terms" className="underline hover:text-[#051336]">
+              <a href="#terms" className="underline hover:text-[#0A0A0A]">
                 Terms
               </a>
               .
@@ -772,7 +772,7 @@ export default function AuthModal() {
             <button
               type="button"
               onClick={() => setShowHelpModal(true)}
-              className="p-1 rounded-full text-slate-400 hover:text-[#051336] cursor-pointer"
+              className="p-1 rounded-full text-slate-400 hover:text-[#0A0A0A] cursor-pointer"
               title="Trouble logging in?"
             >
               <HelpCircle className="w-3.5 h-3.5" />

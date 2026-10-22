@@ -95,7 +95,7 @@ export default function ProductQuickView({ product, onClose, onAddToCart }: Prod
                       onClick={() => setSelectedPackIndex(idx)}
                       className={`py-2 px-2 rounded-xl text-xs font-black transition-all border cursor-pointer flex flex-col items-center ${
                         selectedPackIndex === idx
-                          ? 'brand-gradient text-white border-transparent shadow-md shadow-blue-500/20'
+                          ? 'brand-gradient text-white border-transparent shadow-md shadow-[#007BA7]/20'
                           : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
                       }`}
                     >
@@ -133,7 +133,7 @@ export default function ProductQuickView({ product, onClose, onAddToCart }: Prod
                 <p className="text-xs font-black text-slate-800 uppercase tracking-wider">Key Highlights:</p>
                 {product.features.map((feature, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-xs font-medium text-slate-600">
-                    <Check className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                    <Check className="w-3.5 h-3.5 text-[#007BA7] shrink-0" />
                     <span>{feature}</span>
                   </div>
                 ))}

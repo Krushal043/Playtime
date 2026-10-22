@@ -41,11 +41,11 @@ export default function AeroSearchCategoryBar({
               onClick={() => onSelectCategory(cat.id)}
               className={`px-4 py-2.5 rounded-full text-xs font-black whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 shadow-xs ${
                 isSelected
-                  ? 'bg-gradient-to-r from-[#051336] via-[#0b2560] to-[#1d4ed8] text-white shadow-md ring-2 ring-blue-400/30'
-                  : 'bg-white/85 hover:bg-white border border-white/90 text-slate-700 hover:text-blue-700'
+                  ? 'bg-gradient-to-r from-[#0A0A0A] via-[#005f82] to-[#007BA7] text-white shadow-md ring-2 ring-[#007BA7]/40'
+                  : 'bg-white/85 hover:bg-white border border-white/90 text-slate-700 hover:text-[#007BA7]'
               }`}
             >
-              <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-blue-200' : 'text-slate-500'}`} />
+              <Icon className={`w-3.5 h-3.5 ${isSelected ? 'text-[#38bdf8]' : 'text-slate-500'}`} />
               <span>{cat.label}</span>
             </button>
           );

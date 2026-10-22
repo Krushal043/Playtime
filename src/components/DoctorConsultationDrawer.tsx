@@ -28,17 +28,17 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
       <div className="absolute inset-0" onClick={onClose} />
 
       {/* Drawer Container */}
-      <div className="relative w-full max-w-md h-full bg-white/95 backdrop-blur-2xl border-l border-white/90 shadow-2xl p-6 overflow-y-auto flex flex-col justify-between z-10 text-[#0a193d]">
+      <div className="relative w-full max-w-md h-full bg-white/95 backdrop-blur-2xl border-l border-white/90 shadow-2xl p-6 overflow-y-auto flex flex-col justify-between z-10 text-[#0A0A0A]">
         
         <div className="space-y-6">
           {/* Header */}
           <div className="flex items-center justify-between pb-4 border-b border-slate-200/80">
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-blue-50 text-blue-600 border border-blue-200/60">
+              <div className="p-2 rounded-xl bg-[#007BA7]/10 text-[#007BA7] border border-[#007BA7]/20">
                 <Stethoscope className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-base font-black text-[#0a193d]">Doctor &amp; Medical Panel</h3>
+                <h3 className="text-base font-black text-[#0A0A0A]">Doctor &amp; Medical Panel</h3>
                 <p className="text-[11px] text-slate-500 font-medium">Certified Intimate Health Advisory</p>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
           </div>
 
           {/* Doctor Profile Card */}
-          <div className="p-4 rounded-2xl bg-gradient-to-tr from-blue-50/70 to-slate-50 border border-blue-100/80 flex items-center gap-3.5 shadow-2xs">
+          <div className="p-4 rounded-2xl bg-gradient-to-tr from-[#007BA7]/10 to-slate-50 border border-[#007BA7]/20 flex items-center gap-3.5 shadow-2xs">
             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0">
               <Image
                 src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=300&auto=format&fit=crop&q=80"
@@ -63,8 +63,8 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <h4 className="text-xs font-black text-[#0a193d]">Dr. Aarav Mehta</h4>
-                <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 fill-current" />
+                <h4 className="text-xs font-black text-[#0A0A0A]">Dr. Aarav Mehta</h4>
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#007BA7] fill-current" />
               </div>
               <p className="text-[10px] text-slate-500 font-semibold">BAMS, MD &bull; 12+ Yrs Clinical Experience</p>
               <p className="text-[10px] text-emerald-700 font-bold mt-0.5">Specialist in Male &amp; Couple Intimacy</p>
@@ -74,13 +74,13 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
           {/* Clinical Reassurance Q&A */}
           <div className="space-y-3">
             <h4 className="text-xs font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-              <HelpCircle className="w-3.5 h-3.5 text-rose-500" />
+              <HelpCircle className="w-3.5 h-3.5 text-[#FF2D95]" />
               Frequently Answered by Our Doctors
             </h4>
 
             <div className="space-y-2.5 text-xs">
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <p className="font-black text-[#0a193d]">
+                <p className="font-black text-[#0A0A0A]">
                   Q: Will my partner feel numb or lose sensation?
                 </p>
                 <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
@@ -89,7 +89,7 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <p className="font-black text-[#0a193d]">
+                <p className="font-black text-[#0A0A0A]">
                   Q: Is it safe for oral play and with condoms?
                 </p>
                 <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
@@ -98,7 +98,7 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
               </div>
 
               <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1">
-                <p className="font-black text-[#0a193d]">
+                <p className="font-black text-[#0A0A0A]">
                   Q: Are there any side-effects or dependence?
                 </p>
                 <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
@@ -110,7 +110,7 @@ export default function DoctorConsultationDrawer({ isOpen, onClose }: DoctorCons
 
           {/* Discreet Certifications */}
           <div className="p-3 rounded-2xl bg-white border border-slate-200 text-[11px] text-slate-600 space-y-1.5">
-            <div className="flex items-center gap-2 font-bold text-[#0a193d]">
+            <div className="flex items-center gap-2 font-bold text-[#0A0A0A]">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
               <span>Certified Quality &amp; AYUSH Approved</span>
             </div>

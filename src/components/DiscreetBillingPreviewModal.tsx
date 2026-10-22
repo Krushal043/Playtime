@@ -23,11 +23,11 @@ export default function DiscreetBillingPreviewModal({ isOpen, onClose }: Discree
         </button>
 
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2.5 rounded-2xl bg-blue-50 border border-blue-100 text-blue-600">
+          <div className="p-2.5 rounded-2xl bg-[#007BA7]/10 border border-[#007BA7]/20 text-[#007BA7]">
             <CreditCard className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-lg font-black text-[#0a193d]">Discreet Billing Preview</h3>
+            <h3 className="text-lg font-black text-[#0A0A0A]">Discreet Billing Preview</h3>
             <p className="text-xs text-slate-500 font-medium">What appears on your bank statement</p>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function DiscreetBillingPreviewModal({ isOpen, onClose }: Discree
             Debited: <span className="text-emerald-700 font-black">₹ 2,999.00</span>
           </p>
           <p className="text-slate-600 font-medium">
-            Merchant: <span className="text-[#0a193d] font-black underline decoration-rose-500">PT LOGISTICS SERVICES</span>
+            Merchant: <span className="text-[#0A0A0A] font-black underline decoration-[#FF2D95]">PT LOGISTICS SERVICES</span>
           </p>
           <p className="text-[11px] text-slate-500 font-medium">
             Ref: UPI/TXN/9028348912/SUCCESS
@@ -52,7 +52,7 @@ export default function DiscreetBillingPreviewModal({ isOpen, onClose }: Discree
         <div className="space-y-2.5 text-xs text-slate-600 mb-6 font-medium">
           <div className="flex items-start gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-            <span><strong className="text-[#0a193d] font-bold">Never mentions &quot;Playtime&quot;</strong> or any adult/sexual terms.</span>
+            <span><strong className="text-[#0A0A0A] font-bold">Never mentions &quot;Playtime&quot;</strong> or any adult/sexual terms.</span>
           </div>
           <div className="flex items-start gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
@@ -64,10 +64,10 @@ export default function DiscreetBillingPreviewModal({ isOpen, onClose }: Discree
           </div>
         </div>
 
-        {/* Signature Navy-Red Pill Button */}
+        {/* Signature Gradient Pill Button */}
         <button
           onClick={onClose}
-          className="w-full py-3.5 rounded-full btn-navy-red text-white font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg hover:shadow-xl transition-all"
+          className="w-full py-3.5 rounded-full btn-gradient text-white font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg hover:shadow-xl transition-all"
         >
           Got it, Keep Shopping Securely
         </button>

@@ -11,6 +11,7 @@ import AeroBestsellersRow from '@/components/AeroBestsellersRow';
 import AeroBentoCategories from '@/components/AeroBentoCategories';
 import AeroTechnologyGrid from '@/components/AeroTechnologyGrid';
 import AeroTrustStrip from '@/components/AeroTrustStrip';
+import AeroBlogSection from '@/components/AeroBlogSection';
 import AeroFooter from '@/components/AeroFooter';
 import InfluencerVideoSection from '@/components/home/InfluencerVideoSection';
 import DiscreetBillingPreviewModal from '@/components/DiscreetBillingPreviewModal';
@@ -94,7 +95,7 @@ export default function Home() {
   }, [products, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen silver-shade-bg flex flex-col selection:bg-blue-600/20 selection:text-blue-950">
+    <div className="min-h-screen silver-shade-bg flex flex-col selection:bg-[#007BA7]/25 selection:text-[#0A0A0A]">
       
       {/* 18+ Discretion Gate */}
       <AgeVerificationModal />
@@ -131,7 +132,12 @@ export default function Home() {
         onQuickView={(prod) => setQuickViewProduct(prod)}
       />
 
-      {/* SECTION 4: 2x2 Bento Category Collection Cards */}
+      {/* SECTION 4: Influencer Video Reels & Unboxing UGC (Loved by Doctors, Creators & Couples) */}
+      <InfluencerVideoSection
+        onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
+      />
+
+      {/* SECTION 5: 2x2 Bento Category Collection Cards */}
       <AeroBentoCategories
         onSelectCategory={(cat) => {
           setSelectedCategory(cat);
@@ -139,15 +145,15 @@ export default function Home() {
         }}
       />
 
-      {/* SECTION 5: Influencer Video Reels & Unboxing UGC */}
-      <InfluencerVideoSection
-        onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
-      />
-
       {/* SECTION 6: 6-Column Ayurvedic Science & Clinical Standards Grid */}
       <AeroTechnologyGrid />
 
-      {/* SECTION 7: 4 Horizontal Trust Badges Strip */}
+      {/* SECTION 7: Clinical Journal & Medical Insights (Blog Section) */}
+      <AeroBlogSection
+        onAddToCart={(prod, pack) => handleAddToCart(prod, pack, 1)}
+      />
+
+      {/* SECTION 8: 4 Horizontal Trust Badges Strip */}
       <AeroTrustStrip />
 
       {/* Clean Minimalist Footer (From Reference Design) */}

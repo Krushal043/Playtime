@@ -9,6 +9,8 @@ import { CategoryType } from '@/types';
 import DiscreetBillingPreviewModal from '@/components/DiscreetBillingPreviewModal';
 import { useSettings } from '@/context/SettingsContext';
 
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+
 export interface AeroFooterProps {
   onSelectCategory?: (cat: CategoryType) => void;
   onOpenBillingModal?: () => void;
@@ -19,6 +21,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
   const router = useRouter();
   const pathname = usePathname();
   const [internalBillingOpen, setInternalBillingOpen] = useState(false);
+  const footerRef = useScrollReveal<HTMLElement>();
 
   const handleBillingModal = () => {
     if (onOpenBillingModal) {
@@ -48,7 +51,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
 
   return (
     <>
-      <footer className="w-full bg-white/80 backdrop-blur-xl border-t border-slate-200/90 text-slate-600 text-xs mt-auto">
+      <footer ref={footerRef} className="reveal w-full bg-white/80 backdrop-blur-xl border-t border-slate-200/90 text-slate-600 text-xs mt-auto">
         
         {/* Subtle Trust Strip at top of footer */}
         <div className="border-b border-slate-200/80 bg-slate-100/60 py-4 px-4 sm:px-6">
@@ -58,20 +61,20 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                 <EyeOff className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="font-extrabold text-[#051336] text-[11px] leading-tight">100% Plain Box</p>
+                <p className="font-extrabold text-[#0A0A0A] text-[11px] leading-tight">100% Plain Box</p>
                 <p className="text-[10px] text-slate-500">Zero outer intimate branding</p>
               </div>
             </div>
 
             <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#007BA7]/15 text-[#007BA7] flex items-center justify-center shrink-0">
                 <Lock className="w-4 h-4" />
               </div>
               <div className="text-left">
                 <button
                   type="button"
                   onClick={handleBillingModal}
-                  className="font-extrabold text-[#051336] hover:text-blue-600 text-[11px] leading-tight text-left cursor-pointer"
+                  className="font-extrabold text-[#0A0A0A] hover:text-[#007BA7] text-[11px] leading-tight text-left cursor-pointer"
                 >
                   Discreet Billing &rarr;
                 </button>
@@ -80,11 +83,11 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
             </div>
 
             <div className="flex items-center gap-2.5 justify-center sm:justify-start">
-              <div className="w-8 h-8 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#FF2D95]/15 text-[#FF2D95] flex items-center justify-center shrink-0">
                 <Truck className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="font-extrabold text-[#051336] text-[11px] leading-tight">Express Dispatch</p>
+                <p className="font-extrabold text-[#0A0A0A] text-[11px] leading-tight">Express Dispatch</p>
                 <p className="text-[10px] text-slate-500">27,000+ PIN codes across India</p>
               </div>
             </div>
@@ -94,7 +97,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                 <ShieldCheck className="w-4 h-4" />
               </div>
               <div className="text-left">
-                <p className="font-extrabold text-[#051336] text-[11px] leading-tight">AYUSH Approved</p>
+                <p className="font-extrabold text-[#0A0A0A] text-[11px] leading-tight">AYUSH Approved</p>
                 <p className="text-[10px] text-slate-500">100% Ayurvedic &amp; chemical-free</p>
               </div>
             </div>
@@ -161,7 +164,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
 
             {/* Column 2: Catalog */}
             <div className="space-y-3">
-              <h4 className="text-xs font-black uppercase tracking-wider text-[#051336]">
+              <h4 className="text-xs font-black uppercase tracking-wider text-[#0A0A0A]">
                 Catalog
               </h4>
               <ul className="space-y-2 font-medium text-slate-500">
@@ -169,7 +172,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => handleCategoryClick('extend')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Climax Delay Sprays
                   </button>
@@ -178,7 +181,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => handleCategoryClick('supplements')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Himalayan Shilajit Gold
                   </button>
@@ -187,7 +190,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => handleCategoryClick('lubes')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Organic Lubes &amp; Glides
                   </button>
@@ -196,7 +199,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => handleCategoryClick('couples')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Couples Date Night Kits
                   </button>
@@ -205,7 +208,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => handleCategoryClick('all')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     All Formulations
                   </button>
@@ -215,7 +218,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
 
             {/* Column 3: Customer Care */}
             <div className="space-y-3">
-              <h4 className="text-xs font-black uppercase tracking-wider text-[#051336]">
+              <h4 className="text-xs font-black uppercase tracking-wider text-[#0A0A0A]">
                 Customer Care
               </h4>
               <ul className="space-y-2 font-medium text-slate-500">
@@ -223,7 +226,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => scrollTo('trust-strip')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Discreet Packaging Guide
                   </button>
@@ -232,13 +235,13 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={handleBillingModal}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Discreet Billing Preview
                   </button>
                 </li>
                 <li>
-                  <Link href="/privacy-policy" className="hover:text-[#051336] transition-colors">
+                  <Link href="/privacy-policy" className="hover:text-[#007BA7] transition-colors">
                     Delivery &amp; Privacy Policy
                   </Link>
                 </li>
@@ -246,7 +249,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => scrollTo('tech-grid')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     AYUSH Certifications
                   </button>
@@ -256,12 +259,12 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
 
             {/* Column 4: Company */}
             <div className="space-y-3">
-              <h4 className="text-xs font-black uppercase tracking-wider text-[#051336]">
+              <h4 className="text-xs font-black uppercase tracking-wider text-[#0A0A0A]">
                 Company
               </h4>
               <ul className="space-y-2 font-medium text-slate-500">
                 <li>
-                  <Link href="/" className="hover:text-[#051336] transition-colors">
+                  <Link href="/" className="hover:text-[#007BA7] transition-colors">
                     About Playtime Labs
                   </Link>
                 </li>
@@ -269,18 +272,18 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
                   <button
                     type="button"
                     onClick={() => scrollTo('tech-grid')}
-                    className="hover:text-[#051336] transition-colors cursor-pointer"
+                    className="hover:text-[#007BA7] transition-colors cursor-pointer"
                   >
                     Ayurvedic Science
                   </button>
                 </li>
                 <li>
-                  <Link href="/privacy-policy" className="hover:text-[#051336] transition-colors">
+                  <Link href="/privacy-policy" className="hover:text-[#007BA7] transition-colors">
                     Medical Panel &amp; Ethics
                   </Link>
                 </li>
                 <li>
-                  <Link href="/account" className="hover:text-[#051336] transition-colors">
+                  <Link href="/account" className="hover:text-[#007BA7] transition-colors">
                     My Account
                   </Link>
                 </li>
@@ -289,7 +292,7 @@ export default function AeroFooter({ onSelectCategory, onOpenBillingModal }: Aer
 
             {/* Column 5: Contacts */}
             <div className="space-y-3">
-              <h4 className="text-xs font-black uppercase tracking-wider text-[#051336]">
+              <h4 className="text-xs font-black uppercase tracking-wider text-[#0A0A0A]">
                 Contacts
               </h4>
               <ul className="space-y-2.5 font-medium text-slate-500">
